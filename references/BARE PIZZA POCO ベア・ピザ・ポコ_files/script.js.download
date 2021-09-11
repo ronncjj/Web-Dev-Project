@@ -1,0 +1,168 @@
+// modal
+const modal = document.getElementById("topModal");
+const topBtn = document.getElementById("topOrderButton");
+const navBtn = document.getElementById("navBtn");
+const close = document.getElementById("close");
+
+navBtn.onclick = function () {
+  modal.style.display = "flex";
+}
+
+topBtn.onclick = function () {
+  modal.style.display = "flex";
+}
+
+close.onclick = function () {
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+// navbar for sp
+const toggle = document.getElementById("toggle")
+const navbar = document.getElementById("topNav")
+const link1 = document.querySelector('.nav-item1')
+const link2 = document.querySelector('.nav-item2')
+const link3 = document.querySelector('.nav-item3')
+
+function toggleMenu() {
+  if (navbar.classList.contains("active")) {
+    navbar.classList.remove("active");
+  } else {
+    navbar.classList.add("active");
+  }
+}
+
+function removeMenu() {
+  navbar.classList.remove('active');
+}
+
+toggle.addEventListener("click", toggleMenu, false)
+link1.addEventListener("click", removeMenu, false)
+link2.addEventListener("click", removeMenu, false)
+link3.addEventListener("click", removeMenu, false)
+
+// fixed button
+if (window.matchMedia("(max-width: 750px)").matches) {
+  window.onscroll = function () { scrollFunction() };
+}
+
+function scrollFunction() {
+  if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+    document.getElementById('topOrder').style.top = "75vh";
+    toggle.style.zIndex = "2";
+  } else {
+    document.getElementById('topOrder').style.top = "10vh";
+    toggle.style.zIndex = "1";
+  }
+}
+
+// swiper
+// intro Slider
+let introSwiper;
+let screenWidthIntro;
+let introElement = document.getElementById("introSlider")
+let options = {
+  loop: true,
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+    renderBullet: function (index, className) {
+      return '<span class="' + className + '">' + (index + 1) + '</span>';
+    }
+  },
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  slidesPerView: 1,
+  spaceBetween: 0,
+}
+
+function introSwiperInit() {
+  if (introElement) {
+    screenWidthIntro = window.innerWidth;
+    if (screenWidthIntro <= 750 && !introSwiper) {
+      introSwiper = new Swiper('#introSlider', options);
+    } else if (screenWidthIntro > 750 && introSwiper) {
+      introSwiper.destroy(true, true);
+      introSwiper = null;
+    }
+  }
+}
+
+introSwiperInit();
+window.addEventListener('resize', introSwiperInit);
+
+// Gallery
+let gallerySwiper;
+let screenWidthGallery;
+let galleryElement = document.getElementById("Gallery")
+let goptions = {
+  loop: true,
+  pagination: {
+    el: '.swiper-pagination',
+    type: 'fraction',
+  },
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  slidesPerView: 2,
+  spaceBetween: 0,
+  slideToClickedSlide: true,
+}
+
+function gallerySwiperInit() {
+  if (galleryElement) {
+    screenWidthGallery = window.innerWidth;
+    if (screenWidthGallery > 750 && !gallerySwiper) {
+      gallerySwiper = new Swiper('#Gallery', goptions);
+    } else if (screenWidthGallery <= 750 && gallerySwiper) {
+      gallerySwiper.destroy(true, true);
+      gallerySwiper = null;
+    }
+  }
+}
+
+gallerySwiperInit();
+window.addEventListener('resize', gallerySwiperInit);
+
+const prev_button =  document.querySelector('#Gallery .swiper-button-prev');
+const next_button =  document.querySelector('#Gallery .swiper-button-next');
+
+galleryElement.addEventListener('mouseenter', () => {
+  prev_button.classList.add('hover');
+  next_button.classList.add('hover');
+});
+
+galleryElement.addEventListener('mouseleave', () => {
+  prev_button.classList.remove('hover');
+  next_button.classList.remove('hover');
+});
+
+// Glossary
+const glossary = document.getElementById("Glossary")
+const items = document.querySelectorAll(".g-word");
+
+function toggleItem() {
+  if (this.classList.contains("g-active")) {
+    this.classList.remove("g-active");
+  } else if (glossary.querySelector(".g-active")) {
+    glossary.querySelector(".g-active").classList.remove("g-active");
+    this.classList.add("g-active");
+  } else {
+    this.classList.add("g-active");
+  }
+}
+
+for (let item of items) {
+    if (item.querySelector(".g-details") && item.querySelector(".g-details-p") && item.querySelector(".word-pic")) {
+      item.addEventListener("click", toggleItem, false);
+      item.addEventListener("keypress", toggleItem, false);
+    }
+}
