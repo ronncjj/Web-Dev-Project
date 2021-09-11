@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="37.778" height="107.427" viewBox="0 0 37.778 107.427">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #00ae42;
+        stroke-linecap: round;
+      }
+
+      .cls-1 {
+        stroke-linejoin: round;
+        stroke-width: 8px;
+        stroke-dasharray: 0 15;
+      }
+
+      .cls-2 {
+        stroke-miterlimit: 10;
+        stroke-width: 7px;
+      }
+    </style>
+  </defs>
+  <g id="コンポーネント_21_1" data-name="コンポーネント 21 – 1" transform="translate(4.95 4)">
+    <line id="線_27" data-name="線 27" class="cls-1" y2="79.694" transform="translate(13.939)"/>
+    <path id="パス_151" data-name="パス 151" class="cls-2" d="M438.7,150.96,424.761,164.9,410.822,150.96" transform="translate(-410.822 -66.422)"/>
+  </g>
+</svg>
