@@ -19,6 +19,7 @@ h1{
 
 .nav-region{
     background-color: #E4D8DC  ;
+    width: 1980px;
     text-align: center;
     padding: 20px;
     order: 5;
@@ -26,10 +27,12 @@ h1{
 }
 
 .bg-img{
-    /* border: solid black 2px; */
-    /* background-size: cover;
-    position: relative; */
-    object-fit: fill;
+    background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0));
+    height: calc(100vh - 50px);
+    background-position: center;
+    position: relative;
+    background-size: cover;
+    z-index: 2;
 }
 
 body{
