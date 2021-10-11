@@ -93,6 +93,13 @@ a {
     color: greenyellow;
 }
 
+.orderButton>ul>li:hover {
+    font-style: italic;
+    font-weight: bolder;
+    color: red;
+    text-shadow: 1px 1px red;
+}
+
 .orderButton>ul:hover {
     border: 3px dashed red;
     color: red;
@@ -154,7 +161,7 @@ h1 {
     text-shadow: 0.5px 0.5px green;
 }
 
-li:hover {
+.navigation>nav>ul>li:hover {
     font-style: italic;
     font-weight: bolder;
     text-shadow: 1px 1px green;
