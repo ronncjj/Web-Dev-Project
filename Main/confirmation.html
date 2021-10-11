@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='./css/styles.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    
+    <h1>Pizza Place</h1>
+    <h2>Confirmation</h2>
+
+    <div class="order-wrapper">
+        <table class="order-list-table">
+            <tr>
+                <th>Items</th>
+                <th>Qty</th>
+                <th>Price</th>
+            </tr>
+            
+            <tr>
+                <td>Item 1</td>
+                <td>5</td>
+                <td>$4.50</td>
+            </tr>
+            
+            <tr>
+                <td>Item 1</td>
+                <td>5</td>
+                <td>$4.50</td>
+            </tr>
+            
+            <tr>
+                <td>Item 1</td>
+                <td>5</td>
+                <td>$4.50</td>
+            </tr>
+
+            <tr>
+                <th colspan="2" class="subtotal-price">Subtotal:</th>
+                <th class="subtotal-price">$500</th>
+            </tr>
+        </table>
+    </div>
+
+    <div class="contact-wrapper">
+        <h3 class="info-header" id="ci-header">Contact Information</h3>
+        <h3 class="info-header", id="cc-header">Credit Card Information</h3>
+        <br>
+        
+        <form action="show_post.php", method="post" class="form-info">
+    
+            <div class="ci-left">
+                <label for="name">*Name:</label>
+                <input id="name" type="text" name="name" required align="center"></input><br>
+                <label for="email">*Email:</label>
+                <input id='email' type="email" name="email" required align="center"></input><br>
+                <label for="address">*Address:</label>
+                <input id='address' type="text" name="address" class="form-info-address" required align="left"></input>
+            </div>
+
+            <div class="cc-right">
+                <label for="name">*Name on card:</label>
+                <input id="name" type="text" name="name" required align="center"></input><br>
+                <label for="email">*Email:</label>
+                <input id='email' type="email" name="email" required align="center"></input><br>
+                <label for="email">*Card Number:</label>
+                <input id='cardnum' type="text" name="cardnum" required align="center"></input><br>
+                <label for="cv2">*CV2:</label>
+                <input id='cv2' type="text" name="cv2" required align="center"></input><br>
+                <label for="exp-date">*Card Expiry Date:</label>
+                <input type="month" name="date" id="date" required align="center">
+            </div>
+
+        </form>
+        
+    </div>
+
+</body>
+</html>

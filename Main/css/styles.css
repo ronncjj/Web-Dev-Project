@@ -136,14 +136,12 @@ br{
     display: block;
     content: " ";
     margin-bottom: 20px;
-    /* line-height: 150%; */
 }
 
 form input{
     display: inline;
     vertical-align: text-top;
     width: 250px;
-
 }
 
 form textarea{
@@ -165,4 +163,72 @@ form label {
     /* display: none; */
     vertical-align: none;
     width: 80px;
+}
+
+.order-list-table{
+    width: 80%;
+    height: 500px;
+    text-align: center;
+    font-size: 150%;
+    position: relative;
+    margin-left: 10%;
+    /* margin-right: 10%; */
+    border: 2px solid red;
+    border-radius: 25px
+}
+
+.subtotal-price{
+    border-top: 1.5px dotted black;
+}
+
+.contact-wrapper{
+    text-align: center;
+    padding: 20px 100px 50px;
+    font-size: 100%;
+    width: 900px;
+}
+
+/* .contact-table{
+    width: 80%;
+    height: 500px;
+    text-align: center;
+    font-size: 150%;
+    position: relative;
+    margin-left: 10%;
+    border: 2px solid black;
+    border-radius: 25px
+} */
+
+.info-header{
+    display: inline-block;
+}
+
+#cc-header{
+    /* left: 200px; */
+    float: center;
+    right: 400px;
+}
+
+#ci-header{
+    float: left;
+    left: 0px;
+}
+
+.form{
+    display: inline-block;
+}
+
+.form-info-address{
+    width: 258;
+    height: 100px;
+}
+
+.ci-left{
+    float: left;
+    padding: 0px;
+}
+
+.cc-right{
+    float: right;
+    
 }
