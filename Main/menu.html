@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel='stylesheet' type='text/css' media='screen' href='css/styles.css'>
+    <script src='main.js'></script>
+    <title>R&J Pizza Place</title>
+    <style>
+        #grid {
+            grid-row-gap: 0;
+            grid-column-gap: 80px;
+        }
+
+        .header {
+            grid-column-start: 1;
+            grid-column-end: 6;
+            grid-row-start: 0;
+            grid-row-end: 1;
+        }
+
+        .header>h1 {
+            margin-top: 4rem;
+            text-align: center;
+            font-size: 3rem;
+        }
+
+        .leftNav {
+            padding-left: 2rem;
+        }
+
+        .menu_item {
+            margin-top: 4rem;
+        }
+
+        .menu_item1 {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 1;
+            grid-row-end: 2;
+        }
+
+        .menu_item2 {
+            grid-column-start: 3;
+            grid-column-end: 4;
+            grid-row-start: 1;
+            grid-row-end: 2;
+        }
+
+        .menu_item3 {
+            grid-column-start: 4;
+            grid-column-end: 5;
+            grid-row-start: 1;
+            grid-row-end: 2;
+        }
+
+        .menu_item4 {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 2;
+            grid-row-end: 3;
+        }
+
+        .menu_item5 {
+            grid-column-start: 3;
+            grid-column-end: 4;
+            grid-row-start: 2;
+            grid-row-end: 3;
+        }
+
+        .menu_item6 {
+            grid-column-start: 4;
+            grid-column-end: 5;
+            grid-row-start: 2;
+            grid-row-end: 3;
+        }
+
+        .our-choice-table {
+            border: 3px solid green;
+        }
+
+        .choice-title {
+            border: 3px solid blue;
+            border-radius: 0;
+            background-color: lightskyblue;
+            padding: 0;
+            margin: 0;
+        }
+
+        .submit_order {
+            grid-column-start: 4;
+            grid-column-end: 5;
+            grid-row-start: 3;
+            grid-row-end: 4;
+        }
+
+        .submit_order>a {
+            margin-left: 15rem;
+            margin-top: 6rem;
+            background-color: silver;
+            display: inline-block;
+            text-align: end;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="grid">
+
+        <div class="item item1" id="scrolling-bar">
+            <p>Hand-tossed and Oven Fresh. R&J Pizza Place serves freshly baked pizza!</p>
+        </div>
+
+        <div class="item item2 navigation leftNav">
+            <nav id="leftNav" class="topnav">
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="#intro">ABOUT</a></li>
+                    <li><a href="#outlet">OULET</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="item header">
+            <h1>ORDER MENU</h1>
+        </div>
+
+        <div class="item menu_item1 menu_item">
+            <table class="our-choice-table">
+                <tr class="choice-desc">
+                    <th class="choice-title">Ronn's Choice</th>
+                </tr>
+                <tr>
+                    <th>
+                        <img src="./media/meatzza.jpg" class="choice-img" alt="">
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <figcaption class="choice-caption">Add to cart</figcaption>
+                    </th>
+                </tr>
+            </table>
+        </div>
+
+        <div class="item menu_item2 menu_item">
+            <table class="our-choice-table">
+                <tr class="choice-desc">
+                    <th class="choice-title">Ronn's Choice</th>
+                </tr>
+                <tr>
+                    <th>
+                        <img src="./media/meatzza.jpg" class="choice-img" alt="">
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <figcaption class="choice-caption">Add to cart</figcaption>
+                    </th>
+                </tr>
+            </table>
+        </div>
+
+        <div class="item menu_item3 menu_item">
+            <table class="our-choice-table">
+                <tr class="choice-desc">
+                    <th class="choice-title">Ronn's Choice</th>
+                </tr>
+                <tr>
+                    <th>
+                        <img src="./media/meatzza.jpg" class="choice-img" alt="">
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <figcaption class="choice-caption">Add to cart</figcaption>
+                    </th>
+                </tr>
+            </table>
+        </div>
+
+        <div class="item menu_item4 menu_item">
+            <table class="our-choice-table">
+                <tr class="choice-desc">
+                    <th class="choice-title">Ronn's Choice</th>
+                </tr>
+                <tr>
+                    <th>
+                        <img src="./media/meatzza.jpg" class="choice-img" alt="">
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <figcaption class="choice-caption">Add to cart</figcaption>
+                    </th>
+                </tr>
+            </table>
+        </div>
+
+        <div class="item menu_item5 menu_item">
+            <table class="our-choice-table">
+                <tr class="choice-desc">
+                    <th class="choice-title">Ronn's Choice</th>
+                </tr>
+                <tr>
+                    <th>
+                        <img src="./media/meatzza.jpg" class="choice-img" alt="">
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <figcaption class="choice-caption">Add to cart</figcaption>
+                    </th>
+                </tr>
+            </table>
+        </div>
+
+        <div class="item menu_item6 menu_item">
+            <table class="our-choice-table">
+                <tr class="choice-desc">
+                    <th class="choice-title">Ronn's Choice</th>
+                </tr>
+                <tr>
+                    <th>
+                        <img src="./media/meatzza.jpg" class="choice-img" alt="">
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <figcaption class="choice-caption">Add to cart</figcaption>
+                    </th>
+                </tr>
+            </table>
+        </div>
+
+        <div class="item submit_order">
+            <a href="menu.html">SUBMIT ORDER</a>
+        </div>
+
+    </div>
+</body>
+
+</html>
