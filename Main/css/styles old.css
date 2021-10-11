@@ -1,0 +1,48 @@
+.top-region{
+    background-color: #E4D8DC;
+    padding: none;
+    margin: none;
+    position: relative;
+    text-align: center;
+}
+h1{
+    color:black;
+    text-align: center;
+    background-color: #E4D8DC;
+    margin: 0;
+    padding: 20
+}
+/* nav{
+    float:top;
+    font-size: 20px;
+} */
+
+.nav-region{
+    background-color: #E4D8DC  ;
+    text-align: center;
+    padding: 20px;
+    order: 5;
+    text-decoration: none;
+}
+
+.bg-img{
+    /* border: solid black 2px; */
+    /* background-size: cover;
+    position: relative; */
+    object-fit: fill;
+}
+
+body{
+    margin: 0;
+}
+
+.mid-region{
+    text-align: center;
+    background-color: grey;
+}
+.nav-text{
+    margin: 60px;
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+}
