@@ -42,6 +42,14 @@ var choice_4 = document.getElementById("choice_4").innerText;
 var choice_5 = document.getElementById("choice_5").innerText;
 var choice_6 = document.getElementById("choice_6").innerText;
 
+// Menu item names
+var price_1 = parseInt(document.getElementById("price_1").innerText.split('$')[1]);
+var price_2 = parseInt(document.getElementById("price_2").innerText.split('$')[1]);
+var price_3 = parseInt(document.getElementById("price_3").innerText.split('$')[1]);
+var price_4 = parseInt(document.getElementById("price_4").innerText.split('$')[1]);
+var price_5 = parseInt(document.getElementById("price_5").innerText.split('$')[1]);
+var price_6 = parseInt(document.getElementById("price_6").innerText.split('$')[1]);
+
 function AmountIncrement(event) {
     var node = event.currentTarget;
     var motive = event.currentTarget.id.split('_')[0];
@@ -89,7 +97,7 @@ function AmountIncrement(event) {
     timesDOM.innerHTML = 'x';
     amountDOM.innerHTML = amount;
     equalsDOM.innerHTML = '=';
-    priceDOM.innerHTML = '$5';
+    priceDOM.innerHTML = '$'+ window['price_' + key]*amount;
 
     tableRow.appendChild(itemName);
     tableRow.appendChild(timesDOM);
