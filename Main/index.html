@@ -14,7 +14,7 @@
         <div class="item item1" id="scrolling-bar">
             <p>Hand-tossed and Oven Fresh. R&J Pizza Place serves freshly baked pizza!</p>
         </div>
-        <div class="item item2 navigation leftNav">
+        <div class="navigation leftNav">
             <nav id="leftNav" class="topnav">
                 <ul>
                     <li><a href="#scrolling-bar">HOME</a></li>
@@ -24,11 +24,11 @@
             </nav>
         </div>
 
-        <div class="item item3 navigation rightNav">
+        <div class="navigation rightNav">
             <nav id="rightNav" class="topnav">
                 <ul>
                     <li><a href="menu.html">ORDER</a></li>
-                    <li>TRACK</li>
+                    <li><a href="menu.html">TRACK</a></li>
                     <li><a href="#contact">CONTACT</a></li>
                 </ul>
             </nav>
@@ -66,7 +66,7 @@
 
         <div class="item item6">
 
-            <h2 id="recommendations">Owner's recommendations</h2>
+            <h1 id="recommendations">Owner's recommendations</h1>
 
             <table class="our-choice-table">
                 <tr>
@@ -110,9 +110,9 @@
             </table>
         </div>
 
-        <div class="our-outlet item item8" id="outlet">
+        <div class="our-outlet item item8">
             <table class="our-outlet-table">
-                <h1>Our Outlets</h1>
+                <h1 id="outlet">Our Outlets</h1>
                 <tr>
                     <td class="our-outlet-img-td"><img src="media/shop-1.jpeg" class="outlet-img-top" alt=""></td>
                     <td class="our-outlet-top-td">
@@ -137,17 +137,90 @@
             </table>
         </div>
 
-        <div class="contact-us item item9" id="contact">
-            <h1>Contact Us</h1>
+        <div class="contact-us item9" id="contact_grid">
+            <div class="contact-header">
+                <h1 id="contact">Contact Us</h1>
+            </div>
+            <div class="contact-details">
+                <table>
+                    <tr>
+                        <td>
+                            <img src="./media/facebook-circle-logo-24.png" alt="">
+                            <br>
+                        </td>
+                        <td class="padding_bot_10">
+                            <h3 class="margin_0 margin_bot_5">Facebook</h3>
+                            <p class="margin_0">@R&JPizzaCo</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="./media/phone-solid-24.png" alt="">
+                            <br>
+                        </td>
+                        <td class="padding_bot_10">
+                            <h3 class="margin_0 margin_bot_5">Enquires</h3>
+                            <p class="margin_0">+65 8888 4444</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="./media/pizza-solid-24.png" alt="">
+                            <br>
+                        </td>
+                        <td class="padding_bot_10">
+                            <h3 class="margin_0 margin_bot_5">Delivery</h3>
+                            <p class="margin_0">+65 8888 3333</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
             <div class="contact-region">
                 <form action="show_post.php" method="post">
-                    <label for="name">*Name:</label>
-                    <input id="name" type="text" name="name" required align="center"></input>
-                    <label for="email">*Email:</label>
-                    <input id='email' type="email" name="email" id="email" required align="center"></input>
+                    <div id="contact_name" class="contact_div">
+                        <table>
+                            <tr>
+                                <td>
+                                    <label for="name">Name:</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="name" type="text" name="name" required align="center"></input>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="contact_email" class="contact_div">
+                        <table>
+                            <tr>
+                                <td>
+                                    <label for="email">Email:</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id='email' type="email" name="email" id="email" required
+                                        align="center"></input>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                     <br>
-                    <label for="experience">*Message:</label>
-                    <textarea name="experience" required align="center"></textarea>
+                    <div id="contact_experience" class="contact_div">
+                        <table>
+                            <tr>
+                                <td>
+                                    <label for="experience">Message:</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <textarea name="experience" required align="center"></textarea>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                     <br>
                     <input class="button" type="reset" value="Clear">
                     <input class="button" type="submit" value="Submit">
