@@ -76,11 +76,12 @@
         }
 
         .our-choice-table {
-            border: 3px solid green;
+            /* border: 3px solid green; */
         }
 
         .choice-title {
-            border: 3px solid blue;
+            font-size: 1.5rem;
+            /* border: 1px solid black; */
             border-radius: 0;
             background-color: lightskyblue;
             padding: 0;
@@ -102,6 +103,43 @@
             display: inline-block;
             text-align: end;
         }
+
+        .choice-img {
+            border-radius: 0px;
+            /* border: 1px solid black; */
+            box-shadow: none;
+            /* background-color: green; */
+        }
+
+        tr {
+            text-align: center;
+        }
+
+        .addtocart {
+            border: 1px solid black;
+            display: inline-block;
+        }
+
+        th>span {
+            display: inline;
+            font-size: 40px;
+            padding: 0.15rem 1rem;
+        }
+
+        .plus {
+            border-left: 1px solid black;
+            border-radius: 30px;
+        }
+
+        .minus {
+            border-right: 1px solid black;
+            border-radius: 5px 0 0 5px;
+        }
+
+        .amount {
+            margin: 0 1rem;
+            font-size: 2rem;
+        }
     </style>
 </head>
 
@@ -116,8 +154,8 @@
             <nav id="leftNav" class="topnav">
                 <ul>
                     <li><a href="index.html">HOME</a></li>
-                    <li><a href="#intro">ABOUT</a></li>
-                    <li><a href="#outlet">OULET</a></li>
+                    <li><a href="index.html#intro">ABOUT</a></li>
+                    <li><a href="index.html#outlet">OULET</a></li>
                 </ul>
             </nav>
         </div>
@@ -129,7 +167,7 @@
         <div class="item menu_item1 menu_item">
             <table class="our-choice-table">
                 <tr class="choice-desc">
-                    <th class="choice-title">Ronn's Choice</th>
+                    <th class="choice-title">Ronn's Choice 1</th>
                 </tr>
                 <tr>
                     <th>
@@ -138,7 +176,10 @@
                 </tr>
                 <tr>
                     <th>
-                        <figcaption class="choice-caption">Add to cart</figcaption>
+                        <h2 style="margin-right: 1rem;">0</h2>
+                        <h2>+</h2>
+                        <h2>/</h2>
+                        <h2>-</h2>
                     </th>
                 </tr>
             </table>
@@ -147,7 +188,7 @@
         <div class="item menu_item2 menu_item">
             <table class="our-choice-table">
                 <tr class="choice-desc">
-                    <th class="choice-title">Ronn's Choice</th>
+                    <th class="choice-title">Ronn's Choice 2</th>
                 </tr>
                 <tr>
                     <th>
@@ -155,8 +196,11 @@
                     </th>
                 </tr>
                 <tr>
-                    <th>
-                        <figcaption class="choice-caption">Add to cart</figcaption>
+                    <th class="addtocart">
+                        <h2 style="margin-right: 1rem;">0</h2>
+                        <h2>+</h2>
+                        <h2>/</h2>
+                        <h2>-</h2>
                     </th>
                 </tr>
             </table>
@@ -165,7 +209,7 @@
         <div class="item menu_item3 menu_item">
             <table class="our-choice-table">
                 <tr class="choice-desc">
-                    <th class="choice-title">Ronn's Choice</th>
+                    <th class="choice-title">Ronn's Choice 3</th>
                 </tr>
                 <tr>
                     <th>
@@ -174,7 +218,10 @@
                 </tr>
                 <tr>
                     <th>
-                        <figcaption class="choice-caption">Add to cart</figcaption>
+                        <h2 style="margin-right: 1rem;">0</h2>
+                        <h2>+</h2>
+                        <h2>/</h2>
+                        <h2>-</h2>
                     </th>
                 </tr>
             </table>
@@ -183,7 +230,7 @@
         <div class="item menu_item4 menu_item">
             <table class="our-choice-table">
                 <tr class="choice-desc">
-                    <th class="choice-title">Ronn's Choice</th>
+                    <th class="choice-title">Ronn's Choice 4</th>
                 </tr>
                 <tr>
                     <th>
@@ -192,7 +239,10 @@
                 </tr>
                 <tr>
                     <th>
-                        <figcaption class="choice-caption">Add to cart</figcaption>
+                        <h2 style="margin-right: 1rem;">0</h2>
+                        <h2>+</h2>
+                        <h2>/</h2>
+                        <h2>-</h2>
                     </th>
                 </tr>
             </table>
@@ -201,7 +251,7 @@
         <div class="item menu_item5 menu_item">
             <table class="our-choice-table">
                 <tr class="choice-desc">
-                    <th class="choice-title">Ronn's Choice</th>
+                    <th class="choice-title">Ronn's Choice 5</th>
                 </tr>
                 <tr>
                     <th>
@@ -210,7 +260,10 @@
                 </tr>
                 <tr>
                     <th>
-                        <figcaption class="choice-caption">Add to cart</figcaption>
+                        <h2 style="margin-right: 1rem;">0</h2>
+                        <h2>+</h2>
+                        <h2>/</h2>
+                        <h2>-</h2>
                     </th>
                 </tr>
             </table>
@@ -219,7 +272,7 @@
         <div class="item menu_item6 menu_item">
             <table class="our-choice-table">
                 <tr class="choice-desc">
-                    <th class="choice-title">Ronn's Choice</th>
+                    <th class="choice-title">Ronn's Choice 6</th>
                 </tr>
                 <tr>
                     <th>
@@ -227,9 +280,14 @@
                     </th>
                 </tr>
                 <tr>
-                    <th>
-                        <figcaption class="choice-caption">Add to cart</figcaption>
+                    <th class="addtocart">
+                        <span class="minus">-</span>
+                        <span class="amount">0</span>
+                        <span class="plus">+</span>
                     </th>
+                    <!-- <th>
+                        <figcaption class="choice-caption">Add to cart</figcaption>
+                    </th> -->
                 </tr>
             </table>
         </div>
