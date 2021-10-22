@@ -4,230 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <link rel='stylesheet' type='text/css' media='screen' href='css/styles.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/menu.css'>
     <title>R&J Pizza Place</title>
-    <style>
-        #grid {
-            display: grid;
-            grid-template-columns: 0.3fr 1fr 1fr 1fr 0.3fr 0.5fr;
-            grid-row-gap: 0;
-            grid-column-gap: 50px;
-        }
-
-        .header {
-            grid-column-start: 1;
-            grid-column-end: 6;
-            grid-row-start: 1;
-            grid-row-end: 2;
-        }
-
-        .header>h1 {
-            margin-top: 4rem;
-            text-align: center;
-            font-size: 3rem;
-        }
-
-        .leftNav {
-            padding-left: 2rem;
-        }
-
-        .menu_item {
-            margin-top: 4rem;
-        }
-
-        .item1 {
-            grid-column-start: 1;
-            grid-column-end: 7;
-            grid-row-start: 1;
-            grid-row-end: 2;
-            margin: 0;
-            padding: 0 1rem;
-            background-color: black;
-            border-bottom: 2px solid black;
-            height: 25px;
-            overflow: hidden;
-            z-index: 2;
-        }
-
-        .menu_item1 {
-            grid-column-start: 2;
-            grid-column-end: 3;
-            grid-row-start: 2;
-            grid-row-end: 3;
-        }
-
-        .menu_item2 {
-            grid-column-start: 3;
-            grid-column-end: 4;
-            grid-row-start: 2;
-            grid-row-end: 3;
-        }
-
-        .menu_item3 {
-            grid-column-start: 4;
-            grid-column-end: 5;
-            grid-row-start: 2;
-            grid-row-end: 3;
-        }
-
-        .menu_item4 {
-            grid-column-start: 2;
-            grid-column-end: 3;
-            grid-row-start: 3;
-            grid-row-end: 4;
-        }
-
-        .menu_item5 {
-            grid-column-start: 3;
-            grid-column-end: 4;
-            grid-row-start: 3;
-            grid-row-end: 4;
-        }
-
-        .menu_item6 {
-            grid-column-start: 4;
-            grid-column-end: 5;
-            grid-row-start: 3;
-            grid-row-end: 4;
-        }
-
-        .menu_item7 {
-            grid-column-start: 5;
-            grid-column-end: 7;
-            grid-row-start: 2;
-            grid-row-end: 4;
-            background-color: cadetblue;
-            border-radius: 20px 0px 0px 20px;
-            font-size: 1.5rem;
-        }
-
-        .our-choice-table {
-            /* border: 3px solid green; */
-        }
-
-        .choice-title {
-            font-size: 1.5rem;
-            /* border: 1px solid black; */
-            border-radius: 5px;
-            background-color: lightskyblue;
-            box-shadow: 0px 2px rgba(0, 0, 0, 0.616);
-            padding: 0;
-            margin: 0;
-        }
-
-        .submit_order {
-            grid-column-start: 5;
-            grid-column-end: 7;
-            grid-row-start: 3;
-            grid-row-end: 4;
-            text-align: center;
-        }
-
-        .submit_order>a {
-            /* margin-left: 25rem; */
-            margin-top: 33rem;
-            /* margin-bottom: 3rem; */
-            display: inline-block;
-            text-align: center;
-            background-color: green;
-            width: 40%;
-            /* background-color: silver; */
-            /* text-align: end; */
-        }
-
-        .choice-img {
-            box-shadow: none;
-            background-color: black;
-            height: 100%;
-            border: 1px solid black;
-            border-radius: 5px;
-        }
-
-        tr {
-            text-align: center;
-            overflow: hidden;
-        }
-
-        th>span {
-            display: inline-block;
-            font-size: 30px;
-            padding: 0.1rem 0.5rem;
-            font-family: monospace;
-            overflow: hidden;
-        }
-
-        .addtocart {
-            overflow: hidden;
-            /* border-top: 2px solid black; */
-            /* border-bottom: 2px solid black; */
-            /* outline: 2px solid black; */
-            /* padding: 0px 0px 0px 0px; */
-            /* background-color: grey; */
-            /* border-radius: 5px; */
-        }
-
-        .plus {
-            /* border-left: 2px solid black; */
-            /* border-right: 2px solid black; */
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            background-color: green;
-            box-shadow: 2px 2px rgba(40, 112, 40, 0.2);
-            cursor: pointer;
-            user-select: none;
-        }
-
-        .minus {
-            /* border-right: 2px solid black; */
-            /* border-left: 2px solid black; */
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            background-color: red;
-            box-shadow: 2px 2px rgba(219, 22, 22, 0.246);
-            cursor: pointer;
-            user-select: none;
-
-        }
-
-        .amount {
-            margin: 0 1rem;
-            font-size: 2rem;
-            width: 40px;
-            height: 40px;
-            box-shadow: 2px 2px rgba(0, 0, 0, 0.246);
-        }
-
-        .minus:active,
-        .plus:active {
-            /* border-right: 2px solid black; */
-            /* border-left: 2px solid black; */
-            background-color: grey;
-            box-shadow: 2px 2px rgba(40, 112, 40, 0.2);
-        }
-
-        th {
-            position: relative;
-        }
-
-        .price_tag {
-            display: inline-block;
-            background-color: greenyellow;
-            border: 1px solid black;
-            box-shadow: 2px 2px rgba(40, 112, 40, 0.2);
-            border-radius: 5px;
-            color: black;
-            font-size: 25px;
-            position: absolute;
-            bottom: 1rem;
-            right: 0.8rem;
-            padding: 0.5rem 0.5rem;
-        }
-
-        .price_tag>p {
-            margin: 0;
-        }
-    </style>
 </head>
 
 <body>
@@ -389,22 +167,45 @@
             </table>
         </div>
 
-        <div class="menu_item7">
+        <div class="dummydiv menu_item7"></div>
+
+        <div class="right_sidebar">
             <table id="tabulated_table" class="tabulated_table">
+                <th class="list_header">Item</th>
+                <th class="list_header" style="background-color: cadetblue; box-shadow: none;"></th>
+                <th class="list_header">QTY</th>
+                <th class="list_header" style="background-color: cadetblue; box-shadow: none;"></th>
+                <th class="list_header">Price</th>
                 <!-- <tr>
-                    <td>Ronn's Choice 1</td>
+                    <td>Ronn's Choice</td>
                     <td>x</td>
                     <td>1</td>
                     <td>=</td>
-                    <td>$5</td>
+                    <td>$5.00</td>
                 </tr> -->
             </table>
+            <div id="tabulated_sub_total">
+                Sub-Total: $0.00
+            </div>
+            <div id="tabulated_delivery">
+                Delivery fee: $2.00
+            </div>
+            <div id="tabulated_total">
+                Total: $2.00
+            </div>
+            <form action="menu.php" method="POST">
+                <div class="submit_order">
+                    <input type="hidden" name="item1" id="hidden_item_1" value='0'>
+                    <input type="hidden" name="item2" id="hidden_item_2" value='0'>
+                    <input type="hidden" name="item3" id="hidden_item_3" value='0'>
+                    <input type="hidden" name="item4" id="hidden_item_4" value='0'>
+                    <input type="hidden" name="item5" id="hidden_item_5" value='0'>
+                    <input type="hidden" name="item6" id="hidden_item_6" value='0'>
+                    <a class="button" href="confirm_order.html">TO PAYMENT ↗</a>
+                </div>
+            </form>
         </div>
-
         <script type="text/javascript" src="menu.js"></script>
-        <div class="item submit_order">
-            <a class="button" href="menu.html">SUBMIT ORDER ↗</a>
-        </div>
 
     </div>
 </body>

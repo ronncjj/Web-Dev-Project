@@ -12,6 +12,10 @@
 }
 
 /* Styles */
+#my {
+    zoom: 80%;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -224,6 +228,7 @@ li {
     /* border-radius: 73px; */
     margin-top: 4rem;
     width: 78vw;
+    box-shadow: 5px 5px 8px 2px #888888;
     /* border: 3px dashed green; */
     /* border-radius: 25px */
 }
@@ -250,7 +255,7 @@ li {
     margin-bottom: 5rem;
     color: green;
     font-size: 250%;
-    /* font-weight: 400; */
+    font-weight: 400;
 }
 
 .item7 {
@@ -271,11 +276,11 @@ li {
 
 .choice-img {
     border-radius: 30px;
-    box-shadow: 2px 2px green;
+    box-shadow: 5px 5px 8px 2px #888888;
 }
 
 .choice-title {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 1.5rem;
 }
 
@@ -377,6 +382,7 @@ li {
     grid-row-end: 3;
     grid-column-start: 1;
     grid-column-end: 3;
+    font-size: 1.5rem;
 }
 
 .contact-region {
@@ -408,6 +414,7 @@ li {
 
 #contact {
     color: white;
+    font-size: 2.5rem;
 }
 
 .contact_div {
@@ -430,6 +437,7 @@ li {
     text-align: center;
     background-color: darkcyan;
     padding-bottom: 3rem;
+    padding-top: 2rem;
 }
 
 br {
@@ -444,8 +452,8 @@ form input {
     vertical-align: text-top;
     width: 250px; */
 
-    width: 16.5rem;
-    width: 100%;
+    width: 14.5rem;
+    /* width: 100%; */
     background-color: inherit;
     color: black;
     font-family: inherit;
@@ -492,4 +500,14 @@ form label {
     vertical-align: none;
     padding: 5px;
     width: 80px;
+}
+
+.button:hover {
+    transition: 0.5s;
+    background-color: white;
+    color: black;
+}
+
+.button:active {
+    background-color: darkcyan;
 }

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel='stylesheet' type='text/css' media='screen' href='css/styles.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/confirm_order.css'>
+    <title>R&J Pizza Place</title>
+</head>
+
+<body>
+    <div id="grid">
+
+        <div class="item item1" id="scrolling-bar">
+            <p>Hand-tossed and Oven Fresh. R&J Pizza Place serves freshly baked pizza!</p>
+        </div>
+
+        <div class="item item2 navigation leftNav">
+            <nav id="leftNav" class="topnav">
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="index.html#intro">ABOUT</a></li>
+                    <li><a href="index.html#outlet">OULET</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="item header">
+            <h1>ORDER CONFIRMATION</h1>
+        </div>
+
+        <div class="item order_list">
+            <table>
+                <tr>
+                    <th>Items</th>
+                    <th>QTY</th>
+                    <th>Final Price</th>
+                </tr>
+                <tr>
+                    <td>&nbsp</td>
+                </tr>
+                <tr>
+                    <td>Ronn's Choice</td>
+                    <td>1</td>
+                    <td>$5.00</td>
+                </tr>
+                <tr>
+                    <td>Ronn's Choice</td>
+                    <td>1</td>
+                    <td>$5.00</td>
+                </tr>
+                <tr>
+                    <td>Ronn's Choice</td>
+                    <td>1</td>
+                    <td>$5.00</td>
+                </tr>
+                <tr>
+                    <td>Ronn's Choice</td>
+                    <td>1</td>
+                    <td>$5.00</td>
+                </tr>
+                <tr>
+                    <td>&nbsp</td>
+                </tr>
+                <tr>
+                    <td class="strong">Sub Total</td>
+                    <td>&nbsp</td>
+                    <td class="strong" id="sub_total_cell">$20.00</td>
+                </tr>
+                <tr>
+                    <td class="strong">Delivery fee</td>
+                    <td>&nbsp</td>
+                    <td class="strong" id="delivery_cell">$2.00</td>
+                </tr>
+                <tr>
+                    <td class="strong">Grand Total</td>
+                    <td>&nbsp</td>
+                    <td class="strong" id="grand_total_cell">$20.00</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="item info_grid">
+            <div class="contact_information">
+                <h2>Customer information</h2>
+                <form action="show_post.php" method="post">
+                    <div id="contact_name" class="contact_div">
+                        <table>
+                            <tr>
+                                <td>
+                                    <label for="name">Name:</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="contact_name_input" type="text" name="name" required
+                                        align="center"></input>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <br>
+                    <div id="contact_email" class="contact_div">
+                        <table>
+                            <tr>
+                                <td>
+                                    <label for="email">Email:</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id='email' type="email" name="email" id="email" required
+                                        align="center"></input>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <br>
+                    <div id="shipping_address" class="contact_div">
+                        <table>
+                            <tr>
+                                <td>
+                                    <label for="address">Address:</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <textarea id="shipping_address_textarea" name="address" required
+                                        align="center"></textarea>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <br>
+                    <div class="checkbox_contact">
+                        <table>
+                            <tr>
+                                <td>
+                                    <label for="name_same">Payment Name same as Customer Name</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="name_same" name="name_same" checked='true'>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="checkbox_contact">
+                        <table>
+                            <tr>
+                                <td>
+                                    <label for="address_same">Payment Address same as Customer Address</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="address_same" name="address_same" checked='true'>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <br>
+                </form>
+            </div>
+
+            <div class="payment_info">
+                <h2>Payment details</h2>
+                <form action="show_post.php" method="post">
+                    <div id="payment_name" class="contact_div">
+                        <table>
+                            <tr>
+                                <td>
+                                    <label for="payment_name_input">Name on card:</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="payment_name_input" type="text" name="name" required
+                                        align="center"></input>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <br>
+                    <div id="payment_cardNumber" class="contact_div">
+                        <table>
+                            <tr>
+                                <td>
+                                    <label for="cardNumber">Card Number:</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id='cardNumber' type="text" name="cardNumber" required
+                                        align="center"></input>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <br>
+                    <div id="payment_cardCV2" class="contact_div">
+                        <table>
+                            <tr>
+                                <td>
+                                    <label for="cardCV2">CV2:</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id='cardCV2' type="text" name="cardCV2" required align="center"></input>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <br>
+                    <div id="payment_cardMonth" class="contact_div">
+                        <table>
+                            <tr>
+                                <td>
+                                    <label for="cardMonth">Card Expiry:</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input placeholder="MTH" id='cardMonth' type="text" name="cardMonth" required
+                                        align="center"></input>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="payment_cardYear" class="contact_div">
+                        <table>
+                            <tr>
+                                <td>
+                                    <label for="cardYear">Card Expiry</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input placeholder="YEAR" id='cardYear' type="text" name="cardYear" required
+                                        align="center"></input>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <br>
+                    <div id="billing_address" class="contact_div">
+                        <table>
+                            <tr>
+                                <td>
+                                    <label for="payment_address">Billing Address:</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <textarea id="billing_address_textarea" name="payment_address" required
+                                        align="center"></textarea>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <br>
+                </form>
+            </div>
+        </div>
+        <script type="text/javascript" src="confirm_order.js"></script>
+    </div>
+</body>
+
+</html>
