@@ -1,6 +1,6 @@
 #grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-row-gap: 5vh;
     grid-column-gap: 5vw;
 }
@@ -18,7 +18,7 @@
 }
 
 .order_list {
-    grid-column: 1 / span 4;
+    grid-column: 1 / span 5;
     grid-row: 2 / auto;
     text-align: center;
 }
@@ -48,7 +48,7 @@ td {
 }
 
 .info_grid {
-    grid-column: 1 / span 4;
+    grid-column: 1 / span 5;
     /* grid-row: 3 / auto; */
     margin-left: auto;
     margin-right: auto;
@@ -71,7 +71,7 @@ td {
 }
 
 .info_grid label {
-    font-size: 0.7vw;
+    font-size: 1.5vh;
 }
 
 .info_grid h2 {
@@ -134,11 +134,12 @@ form textarea {}
     display: inline-block;
     width: 100%;
     padding: 0;
+    font-size: 1.7vh;
 }
 
 .checkbox_contact input {
     display: inline-block;
-    position: absolute;
+    /* position: absolute; */
     top: 0;
     right: 2vw;
     text-align: left;
@@ -156,4 +157,17 @@ form textarea {}
     transition: all 0.3s;
     visibility: hidden;
     display: none;
+}
+
+.bottom_left_button {
+    /* position: absolute; */
+    float: left;
+    margin-left: 2vw;
+    padding-bottom: 4vh;
+}
+
+.bottom_right_button {
+    float: right;
+    margin-right: 2vw;
+    padding-bottom: 4vh;
 }
