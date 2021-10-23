@@ -1,6 +1,6 @@
 #grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-row-gap: 5vh;
     grid-column-gap: 5vw;
 }
@@ -9,16 +9,16 @@
     grid-column: 1 / span 5;
     grid-row: 1 / span 1;
     text-align: center;
-    margin: 2vh 0;
+    /* margin: 2vh 0; */
 }
 
 .header>h1 {
-    font-size: 3vw;
+    font-size: 2vw;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .order_list {
-    grid-column: 1 / span 4;
+    grid-column: 1 / span 5;
     grid-row: 2 / auto;
     text-align: center;
 }
@@ -34,7 +34,7 @@
     /* table-layout: fixed; */
     border: 1px solid black;
     border-radius: 20px;
-    background-color: darkcyan;
+    background-color: white;
     box-shadow: 5px 5px 8px 2px #888888;
 }
 
@@ -43,12 +43,12 @@ td {
 }
 
 .strong {
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    /* font-family: Georgia, 'Times New Roman', Times, serif; */
     font-weight: 600;
 }
 
 .info_grid {
-    grid-column: 1 / span 4;
+    grid-column: 1 / span 5;
     /* grid-row: 3 / auto; */
     margin-left: auto;
     margin-right: auto;
@@ -67,15 +67,16 @@ td {
     overflow: hidden;
 
     font-size: 1vw;
-    background-color: rgb(221, 169, 111);
+    background-color: #656176;
 }
 
 .info_grid label {
-    font-size: 0.7vw;
+    font-size: 1.5vh;
 }
 
 .info_grid h2 {
-    color: black;
+    color: white;
+    font-weight: 400;
 }
 
 .contact_information {
@@ -134,11 +135,14 @@ form textarea {}
     display: inline-block;
     width: 100%;
     padding: 0;
+    font-size: 1.7vh;
+    color: white;
+    font-weight: 400;
 }
 
 .checkbox_contact input {
     display: inline-block;
-    position: absolute;
+    /* position: absolute; */
     top: 0;
     right: 2vw;
     text-align: left;
@@ -156,4 +160,33 @@ form textarea {}
     transition: all 0.3s;
     visibility: hidden;
     display: none;
+}
+
+.bottom_left_button {
+    /* position: absolute; */
+    float: left;
+    margin-left: 2vw;
+    padding-bottom: 4vh;
+}
+
+.bottom_right_button {
+    float: right;
+    margin-right: 2vw;
+    padding-bottom: 4vh;
+}
+
+.button {
+    color: black;
+    background-color: white;
+    border: 1px solid black;
+}
+
+.button:hover {
+    background-color: black;
+    color: white;
+}
+
+.button:active {
+    color: black;
+    background-color: white;
 }
