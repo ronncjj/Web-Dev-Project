@@ -72,6 +72,13 @@
                     <td class="strong" id="delivery_cell">$2.00</td>
                 </tr>
                 <tr>
+                    <td class="strong" id="coupon_code_title">Coupon Code</td>
+                    <td>&nbsp</td>
+                    <td class="strong" id="coupon_code_cell">
+                        <input type="text" id="coupon_code_input">
+                    </td>
+                </tr>
+                <tr>
                     <td class="strong">Grand Total</td>
                     <td>&nbsp</td>
                     <td class="strong" id="grand_total_cell">$20.00</td>
@@ -271,6 +278,17 @@
             <a class="button" href="order_status.html">Confirm Order ↗</a>
         </div>
     </div>
+    <form action="menu.php" method="POST">
+        <div class="submit_order">
+            <input type="hidden" name="item1" id="hidden_item_1" value='0'>
+            <input type="hidden" name="item2" id="hidden_item_2" value='0'>
+            <input type="hidden" name="item3" id="hidden_item_3" value='0'>
+            <input type="hidden" name="item4" id="hidden_item_4" value='0'>
+            <input type="hidden" name="item5" id="hidden_item_5" value='0'>
+            <input type="hidden" name="item6" id="hidden_item_6" value='0'>
+            <input type="hidden" name="item7" id="discount" value='0'>
+        </div>
+    </form>
 </body>
 
 </html>
