@@ -55,9 +55,10 @@ var sub_total_cell = document.getElementById("sub_total_cell");
 var delivery_cell = document.getElementById("delivery_cell");
 var grand_total_cell = document.getElementById("grand_total_cell");
 
-// Grand total = sub total + delivery fees
+// Grand total = sub total + delivery fees - discount
 grand_total = parseFloat(sub_total_cell.innerText.split('$')[1])
-+ parseFloat(delivery_cell.innerText.split('$')[1])
++ parseFloat(delivery_cell.innerText.split('$')[1]);
+
 grand_total_cell.innerText = '$' + grand_total.toFixed(2);
 
 
@@ -68,3 +69,29 @@ grand_total_cell.innerText = '$' + grand_total.toFixed(2);
 // contact_name_input.addEventListener("change", (e)=>{
 //     payment_name_input.value = e.currentTarget.value;
 // })
+
+var list_of_coupon_codes = ['dbsnew21', 'ntunew21', 'f32ee'];
+
+// Coupon code Handling
+var coupon_code_cell = document.getElementById("coupon_code_cell");
+coupon_code_cell.addEventListener("change", (e)=>{
+    var node = e.currentTarget;
+
+    coupon_discount = 0.00;
+    var coupon_code_name = node.childNodes[1].value;
+    if (list_of_coupon_codes.includes(coupon_code_name)){
+        coupon_discount = 5.00;
+        node.innerHTML = `- $${coupon_discount}`;
+        document.getElementById('coupon_code_title').innerHTML = "Coupon Code '" + coupon_code_name + "'";
+        document.getElementById('discount').value = coupon_discount;
+    }
+
+    // Grand total = sub total + delivery fees - discount
+    grand_total = parseFloat(sub_total_cell.innerText.split('$')[1])
+    + parseFloat(delivery_cell.innerText.split('$')[1])
+    - parseFloat(coupon_code_cell.innerText.split('$')[1]);
+    console.log(grand_total);
+    console.log(document.getElementById('discount').value);
+
+    grand_total_cell.innerText = '$' + grand_total.toFixed(2);
+})
