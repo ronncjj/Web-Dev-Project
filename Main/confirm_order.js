@@ -89,7 +89,8 @@ coupon_code_cell.addEventListener("change", (e)=>{
     // Grand total = sub total + delivery fees - discount
     grand_total = parseFloat(sub_total_cell.innerText.split('$')[1])
     + parseFloat(delivery_cell.innerText.split('$')[1])
-    - parseFloat(coupon_code_cell.innerText.split('$')[1]);
+    - coupon_discount;
+    
     console.log(grand_total);
     console.log(document.getElementById('discount').value);
 
