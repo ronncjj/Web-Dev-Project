@@ -1,6 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php session_start();
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = array();
+}
+if (isset($_GET['empty'])) {
+    unset($_SESSION['cart']);
+    header('location: ' . $_SERVER['PHP_SELF']);
+    exit();
+}
+?>
+
+<?php
+$servername = "localhost";
+$username = "f32ee";
+$password = "f32ee";
+$dbname = "f32ee";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+?>
+
+<?php
+$sql = "SELECT id, item, price FROM PizzaDB";
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        if ($row["id"] == 1) {
+            $name_1 = $row["item"];
+            $price_1 = $row["price"];
+        }
+        if ($row["id"] == 2) {
+            $name_2 = $row["item"];
+            $price_2 = $row["price"];
+        }
+        if ($row["id"] == 3) {
+            $name_3 = $row["item"];
+            $price_3 = $row["price"];
+        }
+        if ($row["id"] == 4) {
+            $name_4 = $row["item"];
+            $price_4 = $row["price"];
+        }
+        if ($row["id"] == 5) {
+            $name_5 = $row["item"];
+            $price_5 = $row["price"];
+        }                  // $price_1 = $row["price"];
+        if ($row["id"] == 6) {
+            $name_6 = $row["item"];
+            $price_6 = $row["price"];
+        }
+        if ($row["id"] == 7) {
+            $delivery_fee = $row["item"];
+            $delivery = $row["price"];
+        }
+    }
+} else {
+    echo "0 results id=", $row["id"];
+}
+
+$arrayName = [$name_1, $name_2, $name_3, $name_4, $name_5, $name_6];
+$arrayPrice = [$price_1, $price_2, $price_3, $price_4, $price_5, $price_6];
+$arraySum = [];
+?>
+
 <head>
     <meta charset="UTF-8">
     <link rel='stylesheet' type='text/css' media='screen' href='css/styles.css'>
@@ -32,39 +101,46 @@
             <table>
                 <tr>
                     <th>Items</th>
-                    <th>QTY</th>
+                    <th>Qty</th>
                     <th>Final Price</th>
                 </tr>
                 <tr>
                     <td>&nbsp</td>
                 </tr>
-                <tr>
-                    <td>Ronn's Choice</td>
-                    <td>1</td>
-                    <td>$5.00</td>
-                </tr>
-                <tr>
-                    <td>Ronn's Choice</td>
-                    <td>1</td>
-                    <td>$5.00</td>
-                </tr>
-                <tr>
-                    <td>Ronn's Choice</td>
-                    <td>1</td>
-                    <td>$5.00</td>
-                </tr>
-                <tr>
-                    <td>Ronn's Choice</td>
-                    <td>1</td>
-                    <td>$5.00</td>
-                </tr>
+
+                <?php
+                for ($i = 1; $i < 7; $i++) {
+                    if ($_SESSION['item_qty_' . $i] != 0) {
+                        echo "<tr>";
+                        echo "<td>" . $arrayName[$i - 1] . "</td>";
+                        echo "<td>" . $_SESSION['item_qty_' . $i] . "</td>";
+                        echo "<td>$" . $arraySum[$i - 1] = number_format($arrayPrice[$i - 1] * $_SESSION['item_qty_' . $i], 2) . "</td>";
+                        echo "<tr>";
+                    } else {
+                        // $_SESSION['item_qty_' . $i] = 0;
+                        $arraySum[$i - 1] = 0;
+                    }
+                }
+                ?>
                 <tr>
                     <td>&nbsp</td>
                 </tr>
                 <tr>
                     <td class="strong">Sub Total</td>
                     <td>&nbsp</td>
-                    <td class="strong" id="sub_total_cell">$20.00</td>
+                    <td class="strong" id="sub_total_cell">$
+                        <?php
+                        // $total_new = 0;
+
+                        for ($i = 1; $i < 7; $i++) {
+                            // echo $arraySum;
+                            $total = number_format($arrayPrice[$i - 1] * $_SESSION['item_qty_' . $i], 2);
+                            $total_new += $total;
+                            // echo number_format($total_new, 2);
+                        }
+                        echo number_format($total_new, 2);
+                        ?>
+                    </td>
                 </tr>
                 <tr>
                     <td class="strong">Delivery fee</td>
@@ -99,8 +175,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <input id="contact_name_input" type="text" name="name" required
-                                        align="center"></input>
+                                    <input id="contact_name_input" type="text" name="name" required align="center"></input>
                                 </td>
                             </tr>
                         </table>
@@ -115,8 +190,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <input id='email' type="email" name="email" id="email" required
-                                        align="center"></input>
+                                    <input id='email' type="email" name="email" id="email" required align="center"></input>
                                 </td>
                             </tr>
                         </table>
@@ -131,8 +205,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <textarea id="shipping_address_textarea" name="address" required
-                                        align="center"></textarea>
+                                    <textarea id="shipping_address_textarea" name="address" required align="center"></textarea>
                                 </td>
                             </tr>
                         </table>
@@ -178,8 +251,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <input id="payment_name_input" type="text" name="name" required
-                                        align="center"></input>
+                                    <input id="payment_name_input" type="text" name="name" required align="center"></input>
                                 </td>
                             </tr>
                         </table>
@@ -194,8 +266,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <input id='cardNumber' type="text" name="cardNumber" required
-                                        align="center"></input>
+                                    <input id='cardNumber' type="text" name="cardNumber" required align="center"></input>
                                 </td>
                             </tr>
                         </table>
@@ -227,20 +298,20 @@
                                 <td>
                                     <!-- <input placeholder="MTH" id='cardMonth' type="text" name="cardMonth" required
                                         align="center"> -->
-                                        <select id="cardMonth" name="cardMonth" required align="center">
-                                            <option value="january">January</option>
-                                            <option value="february">February</option>
-                                            <option value="march">March</option>
-                                            <option value="april">April</option>
-                                            <option value="may">May</option>
-                                            <option value="june">June</option>
-                                            <option value="july">July</option>
-                                            <option value="august">August</option>
-                                            <option value="september">September</option>
-                                            <option value="october">October</option>
-                                            <option value="november">November</option>
-                                            <option value="december">December</option>
-                                        </select>
+                                    <select id="cardMonth" name="cardMonth" required align="center">
+                                        <option value="january">January</option>
+                                        <option value="february">February</option>
+                                        <option value="march">March</option>
+                                        <option value="april">April</option>
+                                        <option value="may">May</option>
+                                        <option value="june">June</option>
+                                        <option value="july">July</option>
+                                        <option value="august">August</option>
+                                        <option value="september">September</option>
+                                        <option value="october">October</option>
+                                        <option value="november">November</option>
+                                        <option value="december">December</option>
+                                    </select>
                                     <!-- </input> -->
                                 </td>
                             </tr>
@@ -255,8 +326,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <input placeholder="YEAR" id='cardYear' type="text" name="cardYear" required
-                                        align="center"></input>
+                                    <input placeholder="YEAR" id='cardYear' type="text" name="cardYear" required align="center"></input>
                                 </td>
                             </tr>
                         </table>
@@ -271,8 +341,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <textarea id="billing_address_textarea" name="payment_address" required
-                                        align="center"></textarea>
+                                    <textarea id="billing_address_textarea" name="payment_address" required align="center"></textarea>
                                 </td>
                             </tr>
                         </table>
@@ -285,7 +354,7 @@
     </div>
     <div class="bottom_left_button">
         <div class="submit_order">
-            <a class="button" href="menu.html">Back to menu ↗</a>
+            <a class="button" href="menu.php">Back to menu ↗</a>
         </div>
     </div>
     <div class="bottom_right_button">

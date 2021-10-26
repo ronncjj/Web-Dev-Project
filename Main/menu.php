@@ -70,12 +70,28 @@
                         $name_6 = $row["item"];
                         $price_6 = $row["price"];
                     }
+                    if ($row["id"] == 7) {
+                        $delivery_fee = $row["item"];
+                        $delivery = $row["price"];
+                    }
                 }
             } else {
                 echo "0 results id=", $row["id"];
             }
             ?>
 
+            <!-- Session begin -->
+            <?php
+            session_start();
+            if (!isset($_SESSION['cart'])) {
+                $_SESSION['cart'] = array();
+            }
+            if (isset($_GET['buy'])) {
+                $_SESSION['cart'][] = $_GET['buy'];
+                header('location: ' . $_SERVER['PHP_SELF'] . '?' . SID);
+                exit();
+            }
+            ?>
             <h1>ORDER MENU</h1>
         </div>
 
@@ -87,7 +103,7 @@
                 <tr>
                     <th>
                         <div class="price_tag">
-                            <p id="price_1"><?php echo $price_1 ?></p>
+                            <p id="price_1">$<?php echo $price_1 ?></p>
                         </div>
                         <img src="./media/meatzza.jpg" class="choice-img" alt="">
                     </th>
@@ -110,7 +126,7 @@
                 <tr>
                     <th>
                         <div class="price_tag">
-                            <p id="price_2"><?php echo $price_2 ?></p>
+                            <p id="price_2">$<?php echo $price_2 ?></p>
                         </div>
                         <img src="./media/meatzza.jpg" class="choice-img" alt="">
                     </th>
@@ -133,7 +149,7 @@
                 <tr>
                     <th>
                         <div class="price_tag">
-                            <p id="price_3"><?php echo $price_3 ?></p>
+                            <p id="price_3">$<?php echo $price_3 ?></p>
                         </div>
                         <img src="./media/meatzza.jpg" class="choice-img" alt="">
                     </th>
@@ -156,7 +172,7 @@
                 <tr>
                     <th>
                         <div class="price_tag">
-                            <p id="price_4"><?php echo $price_4 ?></p>
+                            <p id="price_4">$<?php echo $price_4 ?></p>
                         </div>
                         <img src="./media/meatzza.jpg" class="choice-img" alt="">
                     </th>
@@ -179,7 +195,7 @@
                 <tr>
                     <th>
                         <div class="price_tag">
-                            <p id="price_5"><?php echo $price_5 ?></p>
+                            <p id="price_5">$<?php echo $price_5 ?></p>
                         </div>
                         <img src="./media/meatzza.jpg" class="choice-img" alt="">
                     </th>
@@ -202,7 +218,7 @@
                 <tr>
                     <th>
                         <div class="price_tag">
-                            <p id="price_6"><?php echo $price_6 ?></p>
+                            <p id="price_6">$<?php echo $price_6 ?></p>
                         </div>
                         <img src="./media/meatzza.jpg" class="choice-img" alt="">
                     </th>
@@ -226,21 +242,16 @@
                 <th class="list_header">QTY</th>
                 <th class="list_header" style="background-color: cadetblue; box-shadow: none;"></th>
                 <th class="list_header">Price</th>
-                <!-- <tr>
-                    <td>Ronn's Choice</td>
-                    <td>x</td>
-                    <td>1</td>
-                    <td>=</td>
-                    <td>$5.00</td>
-                </tr> -->
+
             </table>
             <div id="tabulated_sub_total">
                 Sub-Total: $0.00
             </div>
             <div id="tabulated_delivery">
-                Delivery fee: $2.00
+                <?php echo $delivery_fee ?>: $<?php echo $delivery ?>
             </div>
             <div id="tabulated_total">
+                <!-- Session to calculate total price -->
                 Total: $2.00
             </div>
             <form action="menu.php" method="POST">
@@ -251,9 +262,22 @@
                     <input type="hidden" name="item4" id="hidden_item_4" value='0'>
                     <input type="hidden" name="item5" id="hidden_item_5" value='0'>
                     <input type="hidden" name="item6" id="hidden_item_6" value='0'>
-                    <a class="button" href="confirm_order.html">TO PAYMENT ↗</a>
+                    <a class="button" href="confirm_order.php" name="submit">TO PAYMENT ↗</a>
+                    <input type="submit" name="submit" value="Add to Cart">
+
+
                 </div>
             </form>
+            <?php
+            if (isset($_POST['submit'])) {
+                $_SESSION["item_qty_1"] = $_POST['item1'];
+                $_SESSION["item_qty_2"] = $_POST['item2'];
+                $_SESSION["item_qty_3"] = $_POST['item3'];
+                $_SESSION["item_qty_4"] = $_POST['item4'];
+                $_SESSION["item_qty_5"] = $_POST['item5'];
+                $_SESSION["item_qty_6"] = $_POST['item6'];
+            }
+            ?>
         </div>
         <script type="text/javascript" src="menu.js"></script>
 

@@ -19,7 +19,7 @@ The word NULL must not be quoted*/
 
 $sql = "INSERT INTO PizzaDB (item, price)
 VALUES ('Hawaiian', '2.00'),('Pepporini', '2.00'),('Mozzarella', '3.00'),
-('Mexican', '4.75'),('Cheesy Chicken','5.75'), ('beef', '7.99')";
+('Mexican', '4.75'),('Cheesy Chicken','5.75'), ('beef', '7.99'), ('Delivery Fee', '2.00')";
 
 
 if (mysqli_query($conn, $sql)) {
