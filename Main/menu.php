@@ -26,18 +26,68 @@
         </div>
 
         <div class="item header">
+            <?php
+            $servername = "localhost";
+            $username = "f32ee";
+            $password = "f32ee";
+            $dbname = "f32ee";
+
+            // Create connection
+            $conn = mysqli_connect($servername, $username, $password, $dbname);
+            // Check connection
+            if (!$conn) {
+                die("Connection failed: " . mysqli_connect_error());
+            }
+            ?>
+
+            <?php
+            $sql = "SELECT id, item, price FROM PizzaDB";
+            $result = mysqli_query($conn, $sql);
+
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    if ($row["id"] == 1) {
+                        $name_1 = $row["item"];
+                        $price_1 = $row["price"];
+                    }
+                    if ($row["id"] == 2) {
+                        $name_2 = $row["item"];
+                        $price_2 = $row["price"];
+                    }
+                    if ($row["id"] == 3) {
+                        $name_3 = $row["item"];
+                        $price_3 = $row["price"];
+                    }
+                    if ($row["id"] == 4) {
+                        $name_4 = $row["item"];
+                        $price_4 = $row["price"];
+                    }
+                    if ($row["id"] == 5) {
+                        $name_5 = $row["item"];
+                        $price_5 = $row["price"];
+                    }                  // $price_1 = $row["price"];
+                    if ($row["id"] == 6) {
+                        $name_6 = $row["item"];
+                        $price_6 = $row["price"];
+                    }
+                }
+            } else {
+                echo "0 results id=", $row["id"];
+            }
+            ?>
+
             <h1>ORDER MENU</h1>
         </div>
 
         <div class="item menu_item1 menu_item">
             <table class="our-choice-table">
                 <tr class="choice-desc">
-                    <th class="choice-title" id="choice_1">Hawaiian</th>
+                    <th class="choice-title" id="choice_1"><?php echo $name_1 ?></th>
                 </tr>
                 <tr>
                     <th>
                         <div class="price_tag">
-                            <p id="price_1">$1</p>
+                            <p id="price_1"><?php echo $price_1 ?></p>
                         </div>
                         <img src="./media/meatzza.jpg" class="choice-img" alt="">
                     </th>
@@ -55,12 +105,12 @@
         <div class="item menu_item2 menu_item">
             <table class="our-choice-table">
                 <tr class="choice-desc">
-                    <th class="choice-title" id="choice_2">Pepporini</th>
+                    <th class="choice-title" id="choice_2"><?php echo $name_2 ?></th>
                 </tr>
                 <tr>
                     <th>
                         <div class="price_tag">
-                            <p id="price_2">$2</p>
+                            <p id="price_2"><?php echo $price_2 ?></p>
                         </div>
                         <img src="./media/meatzza.jpg" class="choice-img" alt="">
                     </th>
@@ -78,12 +128,12 @@
         <div class="item menu_item3 menu_item">
             <table class="our-choice-table">
                 <tr class="choice-desc">
-                    <th class="choice-title" id="choice_3">Mozzarella</th>
+                    <th class="choice-title" id="choice_3"><?php echo $name_3 ?></th>
                 </tr>
                 <tr>
                     <th>
                         <div class="price_tag">
-                            <p id="price_3">$3</p>
+                            <p id="price_3"><?php echo $price_3 ?></p>
                         </div>
                         <img src="./media/meatzza.jpg" class="choice-img" alt="">
                     </th>
@@ -101,12 +151,12 @@
         <div class="item menu_item4 menu_item">
             <table class="our-choice-table">
                 <tr class="choice-desc">
-                    <th class="choice-title" id="choice_4">Mexican</th>
+                    <th class="choice-title" id="choice_4"><?php echo $name_4 ?></th>
                 </tr>
                 <tr>
                     <th>
                         <div class="price_tag">
-                            <p id="price_4">$4</p>
+                            <p id="price_4"><?php echo $price_4 ?></p>
                         </div>
                         <img src="./media/meatzza.jpg" class="choice-img" alt="">
                     </th>
@@ -124,12 +174,12 @@
         <div class="item menu_item5 menu_item">
             <table class="our-choice-table">
                 <tr class="choice-desc">
-                    <th class="choice-title" id="choice_5">Cheesy Chicken</th>
+                    <th class="choice-title" id="choice_5"><?php echo $name_5 ?></th>
                 </tr>
                 <tr>
                     <th>
                         <div class="price_tag">
-                            <p id="price_5">$5</p>
+                            <p id="price_5"><?php echo $price_5 ?></p>
                         </div>
                         <img src="./media/meatzza.jpg" class="choice-img" alt="">
                     </th>
@@ -147,12 +197,12 @@
         <div class="item menu_item6 menu_item">
             <table class="our-choice-table">
                 <tr class="choice-desc">
-                    <th class="choice-title" id="choice_6">Beef</th>
+                    <th class="choice-title" id="choice_6"><?php echo $name_6 ?></th>
                 </tr>
                 <tr>
                     <th>
                         <div class="price_tag">
-                            <p id="price_6">$6</p>
+                            <p id="price_6"><?php echo $price_6 ?></p>
                         </div>
                         <img src="./media/meatzza.jpg" class="choice-img" alt="">
                     </th>
