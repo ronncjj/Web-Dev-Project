@@ -151,6 +151,20 @@
     /* text-align: end; */
 }
 
+.submit_order>input {
+    display: inline-block;
+    text-align: center;
+    background-color: green;
+    font-size: 0.8vw;
+    /* border: none; */
+    padding: 0.1vw;
+    width: 40%;
+    height: 100%;
+    z-index: 2;
+    /* background-color: silver; */
+    /* text-align: end; */
+}
+
 .choice-img {
     box-shadow: none;
     background-color: black;

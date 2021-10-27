@@ -71,6 +71,12 @@ var hidden_item_5 = document.getElementById("hidden_item_5");
 var hidden_item_6 = document.getElementById("hidden_item_6");
 
 
+for (var key=1; key<7; key++){
+    handleList(key);
+    updateHiddenform(key);
+    initial_updateFees(key);
+}
+
 // Functions to execute
 // when minus or plus
 // are pressed
@@ -164,15 +170,37 @@ function updateFees(key, motive){
 function updateHiddenform(key){
     var amount = parseFloat(window['amount_' + key].innerHTML);
     window['hidden_item_' + key].value = amount;
-    // console.log('hidden_item_1 : ',hidden_item_1.value);
-    // console.log('hidden_item_2 : ',hidden_item_2.value);
-    // console.log('hidden_item_3 : ',hidden_item_3.value);
-    // console.log('hidden_item_4 : ',hidden_item_4.value);
-    // console.log('hidden_item_5 : ',hidden_item_5.value);
-    // console.log('hidden_item_6 : ',hidden_item_6.value);
+    console.log('hidden_item_1 : ',hidden_item_1.value);
+    console.log('hidden_item_2 : ',hidden_item_2.value);
+    console.log('hidden_item_3 : ',hidden_item_3.value);
+    console.log('hidden_item_4 : ',hidden_item_4.value);
+    console.log('hidden_item_5 : ',hidden_item_5.value);
+    console.log('hidden_item_6 : ',hidden_item_6.value);
+}
+
+function initial_updateFees(key){
+    // updating Local amount variable
+    var amount = parseFloat(window['amount_' + key].innerHTML);
+    var sub_total = parseFloat(tabulated_sub_total.innerText.split('$')[1]);
+    var price = window['price_' + key];
+
+    // Updating Sub-Total
+    sub_total = sub_total + price;
+    tabulated_sub_total.innerText = 'Sub-Total: $' + sub_total.toFixed(2);
+
+    // Updating Total = Sub-total + delivery fee
+    var total = parseFloat(tabulated_total.innerText.split('$')[1]);
+    total = sub_total + delivery_fee;
+    tabulated_total.innerText = 'Total: $' + total.toFixed(2);
 }
 
 
 var tabulated_table = document.getElementById('tabulated_table')
 
 console.log(!!document.getElementById('tabulated_table'));
+
+// document.getElementById('hiddenHref').addEventListener('click', (e)=>{
+//     console.log('testestest');
+//     e.preventDefault;
+//     document.getElementById('hiddenForm').submit();
+// })

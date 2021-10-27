@@ -111,7 +111,15 @@
                 <tr>
                     <th class="addtocart">
                         <span id="minus_1" class="minus">-</span>
-                        <span id="amount_1" class="amount">0</span>
+                        <span id="amount_1" class="amount">
+                            <?php
+                            if ($_SESSION['item_qty_1'] != 0) {
+                                echo $_SESSION['item_qty_1'];
+                            } else {
+                                echo 0;
+                            }
+                            ?>
+                        </span>
                         <span id="plus_1" class="plus">+</span>
                     </th>
                 </tr>
@@ -134,7 +142,15 @@
                 <tr>
                     <th class="addtocart">
                         <span id="minus_2" class="minus">-</span>
-                        <span id="amount_2" class="amount">0</span>
+                        <span id="amount_2" class="amount">
+                            <?php
+                            if ($_SESSION['item_qty_2'] != 0) {
+                                echo $_SESSION['item_qty_2'];
+                            } else {
+                                echo 0;
+                            }
+                            ?>
+                        </span>
                         <span id="plus_2" class="plus">+</span>
                     </th>
                 </tr>
@@ -157,7 +173,15 @@
                 <tr>
                     <th class="addtocart">
                         <span id="minus_3" class="minus">-</span>
-                        <span id="amount_3" class="amount">0</span>
+                        <span id="amount_3" class="amount">
+                            <?php
+                            if ($_SESSION['item_qty_3'] != 0) {
+                                echo $_SESSION['item_qty_3'];
+                            } else {
+                                echo 0;
+                            }
+                            ?>
+                        </span>
                         <span id="plus_3" class="plus">+</span>
                     </th>
                 </tr>
@@ -180,7 +204,15 @@
                 <tr>
                     <th class="addtocart">
                         <span id="minus_4" class="minus">-</span>
-                        <span id="amount_4" class="amount">0</span>
+                        <span id="amount_4" class="amount">
+                            <?php
+                            if ($_SESSION['item_qty_4'] != 0) {
+                                echo $_SESSION['item_qty_4'];
+                            } else {
+                                echo 0;
+                            }
+                            ?>
+                        </span>
                         <span id="plus_4" class="plus">+</span>
                     </th>
                 </tr>
@@ -203,7 +235,15 @@
                 <tr>
                     <th class="addtocart">
                         <span id="minus_5" class="minus">-</span>
-                        <span id="amount_5" class="amount">0</span>
+                        <span id="amount_5" class="amount">
+                            <?php
+                            if ($_SESSION['item_qty_5'] != 0) {
+                                echo $_SESSION['item_qty_5'];
+                            } else {
+                                echo 0;
+                            }
+                            ?>
+                        </span>
                         <span id="plus_5" class="plus">+</span>
                     </th>
                 </tr>
@@ -226,7 +266,15 @@
                 <tr>
                     <th class="addtocart">
                         <span id="minus_6" class="minus">-</span>
-                        <span id="amount_6" class="amount">0</span>
+                        <span id="amount_6" class="amount">
+                            <?php
+                            if ($_SESSION['item_qty_6'] != 0) {
+                                echo $_SESSION['item_qty_6'];
+                            } else {
+                                echo 0;
+                            }
+                            ?>
+                        </span>
                         <span id="plus_6" class="plus">+</span>
                     </th>
                 </tr>
@@ -254,7 +302,12 @@
                 <!-- Session to calculate total price -->
                 Total: $2.00
             </div>
-            <form action="menu.php" method="POST">
+            <!-- the positioning of the session ? no leh, the weird thing is 
+        hor the form action is the one causing it, it is more of "reading" what is submitted-->
+            <!-- I changed this  too, I see wiat ah 
+        i think ah, because we saw it workign only when we submit into
+    I know liao -->
+            <form action="confirm_order.php" method="POST" id="hiddenForm">
                 <div class="submit_order">
                     <input type="hidden" name="item1" id="hidden_item_1" value='0'>
                     <input type="hidden" name="item2" id="hidden_item_2" value='0'>
@@ -262,22 +315,11 @@
                     <input type="hidden" name="item4" id="hidden_item_4" value='0'>
                     <input type="hidden" name="item5" id="hidden_item_5" value='0'>
                     <input type="hidden" name="item6" id="hidden_item_6" value='0'>
-                    <a class="button" href="confirm_order.php" name="submit">TO PAYMENT ↗</a>
-                    <input type="submit" name="submit" value="Add to Cart">
-
-
+                    <!-- <a class="button" href="confirm_order.php" name="submit" id="">TO PAYMENT ↗</a> -->
+                    <input class="button" type="submit" name="submit" value="TO PAYMENT ↗">
                 </div>
             </form>
-            <?php
-            if (isset($_POST['submit'])) {
-                $_SESSION["item_qty_1"] = $_POST['item1'];
-                $_SESSION["item_qty_2"] = $_POST['item2'];
-                $_SESSION["item_qty_3"] = $_POST['item3'];
-                $_SESSION["item_qty_4"] = $_POST['item4'];
-                $_SESSION["item_qty_5"] = $_POST['item5'];
-                $_SESSION["item_qty_6"] = $_POST['item6'];
-            }
-            ?>
+
         </div>
         <script type="text/javascript" src="menu.js"></script>
 

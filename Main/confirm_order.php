@@ -13,6 +13,17 @@ if (isset($_GET['empty'])) {
 ?>
 
 <?php
+if (isset($_POST['submit'])) {
+    $_SESSION["item_qty_1"] = $_POST['item1'];
+    $_SESSION["item_qty_2"] = $_POST['item2'];
+    $_SESSION["item_qty_3"] = $_POST['item3'];
+    $_SESSION["item_qty_4"] = $_POST['item4'];
+    $_SESSION["item_qty_5"] = $_POST['item5'];
+    $_SESSION["item_qty_6"] = $_POST['item6'];
+}
+?>
+
+<?php
 $servername = "localhost";
 $username = "f32ee";
 $password = "f32ee";
@@ -64,6 +75,7 @@ if (mysqli_num_rows($result) > 0) {
 } else {
     echo "0 results id=", $row["id"];
 }
+// echo $price_1;
 
 $arrayName = [$name_1, $name_2, $name_3, $name_4, $name_5, $name_6];
 $arrayPrice = [$price_1, $price_2, $price_3, $price_4, $price_5, $price_6];
@@ -145,7 +157,7 @@ $arraySum = [];
                 <tr>
                     <td class="strong">Delivery fee</td>
                     <td>&nbsp</td>
-                    <td class="strong" id="delivery_cell">$2.00</td>
+                    <td class="strong" id="delivery_cell">$<?php echo $delivery ?></td>
                 </tr>
                 <tr>
                     <td class="strong" id="coupon_code_title">Coupon Code</td>
@@ -155,6 +167,7 @@ $arraySum = [];
                     </td>
                 </tr>
                 <tr>
+                    <!-- Addition of coupon code + delivery fee + $total_new -->
                     <td class="strong">Grand Total</td>
                     <td>&nbsp</td>
                     <td class="strong" id="grand_total_cell">$20.00</td>
