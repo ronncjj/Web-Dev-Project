@@ -203,7 +203,7 @@ $arraySum = [];
                             </tr>
                             <tr>
                                 <td>
-                                    <input id='email' type="email" name="email" id="email" required align="center"></input>
+                                    <input id='contact_email_input' type="email" name="email" required align="center"></input>
                                 </td>
                             </tr>
                         </table>
@@ -363,7 +363,6 @@ $arraySum = [];
                 </form>
             </div>
         </div>
-        <script type="text/javascript" src="confirm_order.js"></script>
     </div>
     <div class="bottom_left_button">
         <div class="submit_order">
@@ -372,20 +371,24 @@ $arraySum = [];
     </div>
     <div class="bottom_right_button">
         <div class="submit_order">
-            <a class="button" href="order_status.html">Confirm Order ↗</a>
+            <a class="button" id="confirm_order_button">Confirm Order ↗</a>
         </div>
     </div>
-    <form action="menu.php" method="POST">
+    <form action="route_confirm_order.php" method="POST" id="confirm_order_form">
         <div class="submit_order">
-            <input type="hidden" name="item1" id="hidden_item_1" value='0'>
-            <input type="hidden" name="item2" id="hidden_item_2" value='0'>
-            <input type="hidden" name="item3" id="hidden_item_3" value='0'>
-            <input type="hidden" name="item4" id="hidden_item_4" value='0'>
-            <input type="hidden" name="item5" id="hidden_item_5" value='0'>
-            <input type="hidden" name="item6" id="hidden_item_6" value='0'>
-            <input type="hidden" name="item7" id="discount" value='0'>
+            <input type="hidden" name="custName_1" id="custName_1">
+            <input type="hidden" name="custEmail_1" id="custEmail_1">
+            <input type="hidden" name="custAddress_1" id="custAddress_1">
+            <!-- Voucher discount $$ -->
+            <input type="hidden" name="discount" id="discount" value='0'> <!-- Voucher discount $$ -->
+            <!-- Total Price = Grand Total -->
+            <input type="hidden" name="grandTotal" id="grandTotal" value='0'>
         </div>
     </form>
+
+
+    <script type="text/javascript" src="confirm_order.js"></script>
+
 </body>
 
 </html>

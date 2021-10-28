@@ -1,6 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+// $_SESSION = array();
+// for ($i = 1; $i < 7; $i++) {
+//     unset($_SESSION['item_qty_' . $i]);
+// }
+// for ($i = 1; $i < 7; $i++) {
+//     echo "<br>";
+//     echo $_SESSION['item_qty_' . $i];
+// }
+session_start();
+$id = session_id();
+session_destroy();
+$id = session_id();
+
+// session_unset();
+
+?>
+
+<?php
+$servername = "localhost";
+$username = "f32ee";
+$password = "f32ee";
+$dbname = "f32ee";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+?>
+
 <head>
     <meta charset="UTF-8">
     <link rel='stylesheet' type='text/css' media='screen' href='css/styles.css'>

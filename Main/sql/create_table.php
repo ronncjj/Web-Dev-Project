@@ -30,11 +30,17 @@ $sql1 = "CREATE TABLE PizzaQty (
 
 $sql2 = "CREATE TABLE CustInfo (
     orderID  INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    custName VARCHAR(40) NOT NULL,
-    custEmail VARCHAR (40) NOT NULL,
-    custAddress VARCHAR (100) NOT NULL
-    -- cardNum INT(30) NOT NULL,
-    -- cv2 INT(10) NOT NULL,
+    custName VARCHAR(80) NOT NULL,
+    custEmail VARCHAR (80) NOT NULL,
+    custAddress VARCHAR (150) NOT NULL,
+    item_1_qty INT(6) NOT NULL,
+    item_2_qty INT(6) NOT NULL,
+    item_3_qty INT(6) NOT NULL,
+    item_4_qty INT(6) NOT NULL,
+    item_5_qty INT(6) NOT NULL,
+    item_6_qty INT(6) NOT NULL,
+    discount DECIMAL(6) NOT NULL,
+    totalPrice DECIMAL(6) NOT NULL
 )";
 
 /* NOT NULL - Each row must contain a value for that column, null values are not allowed
@@ -46,12 +52,17 @@ PRIMARY KEY - Used to uniquely identify the rows in a table. The column with PRI
 
 
 if (mysqli_query($conn, $sql)) {
-    echo "Table MyData created successfully";
+    echo "Table PizzaDB created successfully";
 } else {
     echo "Error creating table: " . mysqli_error($conn);
 }
 if (mysqli_query($conn, $sql1)) {
-    echo "Table MyOrders created successfully";
+    echo "Table PizzaQty created successfully";
+} else {
+    echo "Error creating table: " . mysqli_error($conn);
+}
+if (mysqli_query($conn, $sql2)) {
+    echo "Table CustInfo created successfully";
 } else {
     echo "Error creating table: " . mysqli_error($conn);
 }

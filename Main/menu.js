@@ -185,7 +185,7 @@ function initial_updateFees(key){
     var price = window['price_' + key];
 
     // Updating Sub-Total
-    sub_total = sub_total + price;
+    sub_total = sub_total + price*amount;
     tabulated_sub_total.innerText = 'Sub-Total: $' + sub_total.toFixed(2);
 
     // Updating Total = Sub-total + delivery fee

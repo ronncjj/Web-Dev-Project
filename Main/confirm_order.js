@@ -70,7 +70,7 @@ grand_total_cell.innerText = '$' + grand_total.toFixed(2);
 //     payment_name_input.value = e.currentTarget.value;
 // })
 
-var list_of_coupon_codes = ['dbsnew21', 'ntunew21', 'f32ee'];
+var list_of_coupon_codes = ['dbsnew21', 'ntunew21', 'f32ee', 'freepizza'];
 
 // Coupon code Handling
 var coupon_code_cell = document.getElementById("coupon_code_cell");
@@ -96,3 +96,23 @@ coupon_code_cell.addEventListener("change", (e)=>{
 
     grand_total_cell.innerText = '$' + grand_total.toFixed(2);
 })
+
+// Hidden forms
+var custName_1 = document.getElementById("custName_1");
+var custEmail_1 = document.getElementById("custEmail_1");
+var custAddress_1 = document.getElementById("custAddress_1");
+var grandTotal = document.getElementById("grandTotal");
+
+document.getElementById('confirm_order_button').addEventListener('click', ((e)=>{
+    custName_1.value = document.getElementById("contact_name_input").value;
+    custEmail_1.value = document.getElementById("contact_email_input").value;
+    custAddress_1.value = document.getElementById("shipping_address_textarea").value;
+    discount.value = document.getElementById("discount").value;
+    grandTotal.value = grand_total_cell.innerText.split('$')[1];
+
+    console.log(document.getElementById("custName_1").value);
+    console.log(document.getElementById("custEmail_1").value);
+    console.log(document.getElementById("custAddress_1").value);
+    console.log(document.getElementById("discount").value);
+    document.getElementById('confirm_order_form').submit();
+}))
