@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+session_start();
+?>
 
 <head>
     <meta charset="UTF-8">
@@ -36,11 +39,12 @@
                 <input type="text">
             </div>
             <div class="order_list_row1_3">
-                <input type="submit" value="TRACK" class="button">
+                <!-- <input type="submit" value="TRACK" class="button"> -->
+                <a class="button" id="confirm_order_button">TRACK</a>
+
             </div>
             <div class="order_list_row2">
-                <img src="https://media1.giphy.com/media/3ohze03J8KQbQrVHtC/giphy.gif?cid=790b761116e1f424bf30b9620db09ebc00bbfdc82a1e4891&rid=giphy.gif&ct=s"
-                    alt="">
+                <img src="https://media1.giphy.com/media/3ohze03J8KQbQrVHtC/giphy.gif?cid=790b761116e1f424bf30b9620db09ebc00bbfdc82a1e4891&rid=giphy.gif&ct=s" alt="">
             </div>
         </div>
 
@@ -62,8 +66,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input id="contact_name_input" type="text" name="name" required
-                                            align="center"></input>
+                                        <input id="contact_name_input" type="text" name="name" required align="center"></input>
                                     </td>
                                 </tr>
                             </table>
@@ -78,8 +81,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input id='email' type="email" name="email" id="email" required
-                                            align="center"></input>
+                                        <input id='email' type="email" name="email" id="email" required align="center"></input>
                                     </td>
                                 </tr>
                             </table>
@@ -94,8 +96,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <textarea id="shipping_address_textarea" name="address" required
-                                            align="center"></textarea>
+                                        <textarea id="shipping_address_textarea" name="address" required align="center"></textarea>
                                     </td>
                                 </tr>
                             </table>

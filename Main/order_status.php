@@ -2,21 +2,10 @@
 <html lang="en">
 
 <?php
-// $_SESSION = array();
-// for ($i = 1; $i < 7; $i++) {
-//     unset($_SESSION['item_qty_' . $i]);
-// }
-// for ($i = 1; $i < 7; $i++) {
-//     echo "<br>";
-//     echo $_SESSION['item_qty_' . $i];
-// }
 session_start();
 $id = session_id();
 session_destroy();
-$id = session_id();
-
-// session_unset();
-
+// $id = session_id();
 ?>
 
 <?php
@@ -32,6 +21,96 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 ?>
+
+<?php
+$sql = "SELECT id, item, price FROM PizzaDB";
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        if ($row["id"] == 1) {
+            $name_1 = $row["item"];
+            $price_1 = $row["price"];
+        }
+        if ($row["id"] == 2) {
+            $name_2 = $row["item"];
+            $price_2 = $row["price"];
+        }
+        if ($row["id"] == 3) {
+            $name_3 = $row["item"];
+            $price_3 = $row["price"];
+        }
+        if ($row["id"] == 4) {
+            $name_4 = $row["item"];
+            $price_4 = $row["price"];
+        }
+        if ($row["id"] == 5) {
+            $name_5 = $row["item"];
+            $price_5 = $row["price"];
+        }                  // $price_1 = $row["price"];
+        if ($row["id"] == 6) {
+            $name_6 = $row["item"];
+            $price_6 = $row["price"];
+        }
+        if ($row["id"] == 7) {
+            $delivery_fee = $row["item"];
+            $delivery = $row["price"];
+        }
+    }
+} else {
+    echo "0 results id=", $row["id"];
+}
+// echo $price_1;
+
+$arrayName = [$name_1, $name_2, $name_3, $name_4, $name_5, $name_6];
+$arrayPrice = [$price_1, $price_2, $price_3, $price_4, $price_5, $price_6];
+$arraySum = [];
+?>
+
+<?php
+$sql = "INSERT INTO CustInfo (custName, custEmail, custAddress) VALUES
+('Dummy', 'test@gmail.com', 'Singapore 541023')";
+
+if (mysqli_query($conn, $sql)) {
+    $last_id2 = mysqli_insert_id($conn);
+} else {
+    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+}
+
+$sql2 = "DELETE FROM CustInfo WHERE orderID = $last_id2";
+if (mysqli_query($conn, $sql2)) {
+    // $last_id = $last_id2 - 1;
+} else {
+    echo "Error deleting record: " . mysqli_error($conn);
+}
+$last_id = $last_id2 - 1;
+session_start();
+$sqlDB = "SELECT orderID, item_1_qty, item_2_qty, item_3_qty, item_4_qty, item_5_qty,
+item_6_qty, discount, totalPrice FROM CustInfo";
+$resultDB = mysqli_query($conn, $sqlDB);
+// mysqli_close($conn);
+if (mysqli_num_rows($resultDB) > 0) {
+    while ($row = mysqli_fetch_assoc($resultDB)) {
+        if ($row["orderID"] == $last_id) {
+            $orderID = $id;
+            $qty_1 = $row["item_1_qty"];
+            $qty_2 = $row["item_2_qty"];
+            $qty_3 = $row["item_3_qty"];
+            $qty_4 = $row["item_4_qty"];
+            $qty_5 = $row["item_5_qty"];
+            $qty_6 = $row["item_6_qty"];
+            $discount = $row["discount"];
+            $totalPrice = $row["totalPrice"];
+        }
+        if ($row["orderID" == $id]) {
+        }
+    }
+}
+$QtyArray = [$qty_1, $qty_2, $qty_3, $qty_4, $qty_5, $qty_6];
+session_destroy();
+?>
+
+
 
 <head>
     <meta charset="UTF-8">
@@ -79,33 +158,39 @@ if (!$conn) {
                 <tr>
                     <td>&nbsp</td>
                 </tr>
+
+                <?php
+                for ($i = 0; $i < count($QtyArray); $i++) {
+                    if ($QtyArray[$i] != 0) {
+                        echo "<tr>";
+                        echo "<td>" . $arrayName[$i] . "</td>";
+                        echo "<td>" . $QtyArray[$i] . "</td>";
+                        echo "<td>$" . $arraySum[$i] = number_format($arrayPrice[$i] * $QtyArray[$i], 2) . "</td>";
+                        echo "<tr>";
+                    } else {
+                        // $_SESSION['item_qty_' . $i] = 0;
+                        $arraySum[$i - 1] = 0;
+                    }
+                }
+                ?>
+
                 <tr>
-                    <td>Ronn's Choice</td>
-                    <td>1</td>
-                    <td>$5.00</td>
-                </tr>
-                <tr>
-                    <td>Ronn's Choice</td>
-                    <td>1</td>
-                    <td>$5.00</td>
-                </tr>
-                <tr>
-                    <td>Ronn's Choice</td>
-                    <td>1</td>
-                    <td>$5.00</td>
-                </tr>
-                <tr>
-                    <td>Ronn's Choice</td>
-                    <td>1</td>
-                    <td>$5.00</td>
-                </tr>
-                <tr>
-                    <td>&nbsp</td>
-                </tr>
-                <tr>
+                    <br>
                     <td class="strong">Sub Total</td>
                     <td>&nbsp</td>
-                    <td class="strong" id="sub_total_cell">$20.00</td>
+                    <td class="strong" id="sub_total_cell">$
+                        <?php
+                        // $total_new = 0;
+
+                        for ($i = 0; $i < count($QtyArray); $i++) {
+                            // echo $arraySum;
+                            $total = number_format($arrayPrice[$i] * $QtyArray[$i], 2);
+                            $total_new += $total;
+                            // echo number_format($total_new, 2);
+                        }
+                        echo number_format($total_new, 2);
+                        ?>
+                    </td>
                 </tr>
                 <tr>
                     <td class="strong">Delivery fee</td>
@@ -113,16 +198,16 @@ if (!$conn) {
                     <td class="strong" id="delivery_cell">$2.00</td>
                 </tr>
                 <tr>
-                    <td class="strong" id="coupon_code_title">Coupon Code 'ntunew21'</td>
+                    <td class="strong" id="coupon_code_title">Coupon Code </td>
                     <td>&nbsp</td>
                     <td class="strong" id="coupon_code_cell">
-                        - $5.00
+                        $<?php echo $discount ?>
                     </td>
                 </tr>
                 <tr>
                     <td class="strong">Grand Total</td>
                     <td>&nbsp</td>
-                    <td class="strong" id="grand_total_cell">$20.00</td>
+                    <td class="strong" id="grand_total_cell">$<?php echo $totalPrice ?></td>
                 </tr>
             </table>
         </div>
