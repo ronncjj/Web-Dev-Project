@@ -2,6 +2,11 @@
 <html lang="en">
 <?php
 session_start();
+
+if (isset($_POST['idText'])) {
+    $id = $_POST['idText'];
+}
+
 ?>
 
 <head>
@@ -36,7 +41,7 @@ session_start();
                 <span>Order Number:</span>
             </div>
             <div class="order_list_row1_2">
-                <input type="text">
+                <input type="text" name="idText">
             </div>
             <div class="order_list_row1_3">
                 <!-- <input type="submit" value="TRACK" class="button"> -->
