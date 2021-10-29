@@ -158,22 +158,19 @@ session_destroy();
                 <tr>
                     <td>&nbsp</td>
                 </tr>
-
-                <?php
-                for ($i = 0; $i < count($QtyArray); $i++) {
-                    if ($QtyArray[$i] != 0) {
-                        echo "<tr>";
-                        echo "<td>" . $arrayName[$i] . "</td>";
-                        echo "<td>" . $QtyArray[$i] . "</td>";
-                        echo "<td>$" . $arraySum[$i] = number_format($arrayPrice[$i] * $QtyArray[$i], 2) . "</td>";
-                        echo "<tr>";
-                    } else {
-                        // $_SESSION['item_qty_' . $i] = 0;
-                        $arraySum[$i - 1] = 0;
+                <tr>
+                    <?php
+                    for ($i = 0; $i < count($QtyArray); $i++) {
+                        if ($QtyArray[$i] != 0) {
+                            echo "<tr>";
+                            echo "<td>" . $arrayName[$i] . "</td>";
+                            echo "<td>" . $QtyArray[$i] . "</td>";
+                            echo "<td>$" . $arraySum[$i] = number_format($arrayPrice[$i] * $QtyArray[$i], 2) . "</td>";
+                            echo "<tr>";
+                        }
                     }
-                }
-                ?>
-
+                    ?>
+                </tr>
                 <tr>
                     <br>
                     <td class="strong">Sub Total</td>
