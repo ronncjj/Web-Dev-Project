@@ -1,20 +1,21 @@
-// Handling of Grand Total
-var sub_total_cell = document.getElementById("sub_total_cell");
-var delivery_cell = document.getElementById("delivery_cell");
-var grand_total_cell = document.getElementById("grand_total_cell");
+// Check for Error Feedback from invalid tracking ID
 
-// Grand total = sub total + delivery fees - discount
-grand_total = parseFloat(sub_total_cell.innerText.split('$')[1])
-+ parseFloat(delivery_cell.innerText.split('$')[1])
-- parseFloat(coupon_code_cell.innerText.split('$')[1]);
-
-grand_total_cell.innerText = '$' + grand_total.toFixed(2);
+if (document.getElementById('hidden_input').value == 'errorKey'){
+    console.log('asdfasdfasdfasdf');
+    alert('You have entered an Invalid Order Number');
+}
 
 
-// shipping_address_textarea.addEventListener("change", (e)=>{
-//     billing_address_textarea.value = e.currentTarget.value;
-// })
+// Link order number input with hidden input
+document.getElementById('order_number_input')
+.addEventListener("change", ((e)=>{
+    var order_number_input = e.currentTarget;
+    document.getElementById('hidden_input').value = order_number_input.value;
+    console.log(document.getElementById('hidden_input').value);
+}))
 
-// contact_name_input.addEventListener("change", (e)=>{
-//     payment_name_input.value = e.currentTarget.value;
-// })
+// Submit hidden input on click of TRACK button
+document.getElementById('order_number_button')
+.addEventListener("click", ((e)=>{
+    document.getElementById('confirm_order_form').submit();
+}))

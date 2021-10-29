@@ -18,9 +18,9 @@
         <div class="item item2 navigation leftNav">
             <nav id="leftNav" class="topnav">
                 <ul>
-                    <li><a href="index.html">HOME</a></li>
-                    <li><a href="index.html#intro">ABOUT</a></li>
-                    <li><a href="index.html#outlet">OULET</a></li>
+                    <li><a href="index.php">HOME</a></li>
+                    <li><a href="index.php#intro">ABOUT</a></li>
+                    <li><a href="index.php#outlet">OULET</a></li>
                 </ul>
             </nav>
         </div>

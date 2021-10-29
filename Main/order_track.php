@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <?php
 session_start();
-
-if (isset($_POST['idText'])) {
-    $id = $_POST['idText'];
-}
-
+session_destroy();
+session_start();
 ?>
 
 <head>
@@ -25,9 +23,9 @@ if (isset($_POST['idText'])) {
         <div class="item item2 navigation leftNav">
             <nav id="leftNav" class="topnav">
                 <ul>
-                    <li><a href="index.html">HOME</a></li>
-                    <li><a href="index.html#intro">ABOUT</a></li>
-                    <li><a href="index.html#outlet">OULET</a></li>
+                    <li><a href="index.php">HOME</a></li>
+                    <li><a href="index.php#intro">ABOUT</a></li>
+                    <li><a href="index.php#outlet">OULET</a></li>
                 </ul>
             </nav>
         </div>
@@ -41,12 +39,11 @@ if (isset($_POST['idText'])) {
                 <span>Order Number:</span>
             </div>
             <div class="order_list_row1_2">
-                <input type="text" name="idText">
+                <input type="text" name="idText" id="order_number_input">
             </div>
             <div class="order_list_row1_3">
                 <!-- <input type="submit" value="TRACK" class="button"> -->
-                <a class="button" id="confirm_order_button">TRACK</a>
-
+                <a class="button" id="order_number_button">TRACK</a>
             </div>
             <div class="order_list_row2">
                 <img src="https://media1.giphy.com/media/3ohze03J8KQbQrVHtC/giphy.gif?cid=790b761116e1f424bf30b9620db09ebc00bbfdc82a1e4891&rid=giphy.gif&ct=s" alt="">
@@ -116,6 +113,16 @@ if (isset($_POST['idText'])) {
                 <img src="./media/mxtt7r.jpg" alt="">
             </div>
         </div>
+        <form action="order_status.php" method="POST" id="confirm_order_form">
+            <?php
+            session_start();
+            if (isset($_SESSION['errorKey'])) {
+                echo '<input type="hidden" id="hidden_input" name="tracking_id" value="errorKey">';
+            } else {
+                echo '<input type="hidden" id="hidden_input" name="tracking_id" value="0">';
+            }
+            ?>
+        </form>
         <script type="text/javascript" src="order_track.js"></script>
     </div>
 </body>

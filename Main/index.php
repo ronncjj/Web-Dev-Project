@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+session_start();
+session_destroy() ?>
+
 <head>
     <meta charset="UTF-8">
     <link rel='stylesheet' type='text/css' media='screen' href='css/styles.css'>
@@ -42,14 +46,11 @@
             </div>
             <div class="arrowdown">
                 <a href="#intro">
-                    <img height="80px"
-                        src="https://media4.giphy.com/media/FyXa91L4IhKRGRddJN/giphy.gif?cid=790b7611cbfd443645d44791b7c07c303de67abcbd824082&rid=giphy.gif&ct=s"
-                        alt="arrowDown">
+                    <img height="80px" src="https://media4.giphy.com/media/FyXa91L4IhKRGRddJN/giphy.gif?cid=790b7611cbfd443645d44791b7c07c303de67abcbd824082&rid=giphy.gif&ct=s" alt="arrowDown">
                 </a>
             </div>
             <div class="logo">
-                <img style="filter: invert(42%) sepia(93%) saturate(1352%) hue-rotate(87deg) brightness(119%) contrast(119%);"
-                    height="400px" src="./media/ronnJustin.svg" alt="">
+                <img style="filter: invert(42%) sepia(93%) saturate(1352%) hue-rotate(87deg) brightness(119%) contrast(119%);" height="400px" src="./media/ronnJustin.svg" alt="">
             </div>
         </div>
 
@@ -200,8 +201,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <input id='email' type="email" name="email" id="email" required
-                                        align="center"></input>
+                                    <input id='email' type="email" name="email" id="email" required align="center"></input>
                                 </td>
                             </tr>
                         </table>

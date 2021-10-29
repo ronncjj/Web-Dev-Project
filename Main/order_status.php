@@ -3,9 +3,16 @@
 
 <?php
 session_start();
-// $id = session_id();
-// session_destroy();
-// $id = session_id();
+// Converting order ID to MD5 format, catches from order_track.php    
+if (!isset($_SESSION['orderID'])) {
+    $_SESSION['orderID'] = $_POST['tracking_id'];
+} // This loop catches refresh on the same page, if coming from Making an order
+elseif (isset($_SESSION['errorKey'])) {
+    $_SESSION['orderID'] = $_SESSION['orderID'];
+} // This loop catches confirm_order.php -> route_confirm_order.php
+elseif (isset($_SESSION['orderID']) && !isset($_POST['tracking_id'])) {
+    $_SESSION['orderID'] = substr(md5($_SESSION['orderID']), 0, 4);
+}
 ?>
 
 <?php
@@ -73,8 +80,10 @@ item_6_qty, discount, totalPrice FROM CustInfo";
 $resultDB = mysqli_query($conn, $sqlDB);
 // mysqli_close($conn);
 if (mysqli_num_rows($resultDB) > 0) {
+    // Checker key
+    $_SESSION['errorKey'] = 1;
     while ($row = mysqli_fetch_assoc($resultDB)) {
-        if ($row["orderID"] == $_SESSION['orderID']) {
+        if (substr(md5($row["orderID"]), 0, 4) == $_SESSION['orderID']) {
             $orderID = $_SESSION['orderID'];
             $qty_1 = $row["item_1_qty"];
             $qty_2 = $row["item_2_qty"];
@@ -84,7 +93,12 @@ if (mysqli_num_rows($resultDB) > 0) {
             $qty_6 = $row["item_6_qty"];
             $discount = $row["discount"];
             $totalPrice = $row["totalPrice"];
+            $_SESSION['errorKey'] = 0;
         }
+    }
+    // In the case where no order was found.
+    if ($_SESSION['errorKey'] == 1) {
+        header("Location: order_track.php");
     }
 }
 $QtyArray = [$qty_1, $qty_2, $qty_3, $qty_4, $qty_5, $qty_6];
@@ -108,9 +122,9 @@ $QtyArray = [$qty_1, $qty_2, $qty_3, $qty_4, $qty_5, $qty_6];
         <div class="item item2 navigation leftNav">
             <nav id="leftNav" class="topnav">
                 <ul>
-                    <li><a href="index.html">HOME</a></li>
-                    <li><a href="index.html#intro">ABOUT</a></li>
-                    <li><a href="index.html#outlet">OULET</a></li>
+                    <li><a href="index.php">HOME</a></li>
+                    <li><a href="index.php#intro">ABOUT</a></li>
+                    <li><a href="index.php#outlet">OULET</a></li>
                 </ul>
             </nav>
         </div>
@@ -132,7 +146,7 @@ $QtyArray = [$qty_1, $qty_2, $qty_3, $qty_4, $qty_5, $qty_6];
             <table>
                 <tr>
                     <th style="text-align: center;" colspan="3" class="order-numb">
-                        Order Number #: <?php echo $_SESSION["orderID"] ?>
+                        Order Number #: <?php echo $orderID ?>
                     </th>
                 </tr>
                 <tr class="blank_row">
@@ -203,7 +217,10 @@ $QtyArray = [$qty_1, $qty_2, $qty_3, $qty_4, $qty_5, $qty_6];
         <script type="text/javascript" src="order_status.js"></script>
     </div>
     <?php
-    session_destroy();
+    // // Destroy session if not rerouted
+    // if ($key != 0) {
+    //     session_destroy();
+    // }   
     ?>
 </body>
 
