@@ -3,8 +3,8 @@
 
 <?php
 session_start();
-$id = session_id();
-session_destroy();
+// $id = session_id();
+// session_destroy();
 // $id = session_id();
 ?>
 
@@ -47,7 +47,7 @@ if (mysqli_num_rows($result) > 0) {
         if ($row["id"] == 5) {
             $name_5 = $row["item"];
             $price_5 = $row["price"];
-        }                  // $price_1 = $row["price"];
+        }
         if ($row["id"] == 6) {
             $name_6 = $row["item"];
             $price_6 = $row["price"];
@@ -60,7 +60,6 @@ if (mysqli_num_rows($result) > 0) {
 } else {
     echo "0 results id=", $row["id"];
 }
-// echo $price_1;
 
 $arrayName = [$name_1, $name_2, $name_3, $name_4, $name_5, $name_6];
 $arrayPrice = [$price_1, $price_2, $price_3, $price_4, $price_5, $price_6];
@@ -68,31 +67,15 @@ $arraySum = [];
 ?>
 
 <?php
-$sql = "INSERT INTO CustInfo (custName, custEmail, custAddress) VALUES
-('Dummy', 'test@gmail.com', 'Singapore 541023')";
 
-if (mysqli_query($conn, $sql)) {
-    $last_id2 = mysqli_insert_id($conn);
-} else {
-    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-}
-
-$sql2 = "DELETE FROM CustInfo WHERE orderID = $last_id2";
-if (mysqli_query($conn, $sql2)) {
-    // $last_id = $last_id2 - 1;
-} else {
-    echo "Error deleting record: " . mysqli_error($conn);
-}
-$last_id = $last_id2 - 1;
-session_start();
 $sqlDB = "SELECT orderID, item_1_qty, item_2_qty, item_3_qty, item_4_qty, item_5_qty,
 item_6_qty, discount, totalPrice FROM CustInfo";
 $resultDB = mysqli_query($conn, $sqlDB);
 // mysqli_close($conn);
 if (mysqli_num_rows($resultDB) > 0) {
     while ($row = mysqli_fetch_assoc($resultDB)) {
-        if ($row["orderID"] == $last_id) {
-            $orderID = $id;
+        if ($row["orderID"] == $_SESSION['orderID']) {
+            $orderID = $_SESSION['orderID'];
             $qty_1 = $row["item_1_qty"];
             $qty_2 = $row["item_2_qty"];
             $qty_3 = $row["item_3_qty"];
@@ -102,12 +85,9 @@ if (mysqli_num_rows($resultDB) > 0) {
             $discount = $row["discount"];
             $totalPrice = $row["totalPrice"];
         }
-        if ($row["orderID" == $id]) {
-        }
     }
 }
 $QtyArray = [$qty_1, $qty_2, $qty_3, $qty_4, $qty_5, $qty_6];
-session_destroy();
 ?>
 
 
@@ -151,6 +131,15 @@ session_destroy();
         <div class="item order_list">
             <table>
                 <tr>
+                    <th style="text-align: center;" colspan="3" class="order-numb">
+                        Order Number #: <?php echo $_SESSION["orderID"] ?>
+                    </th>
+                </tr>
+                <tr class="blank_row">
+                    <td bgcolor="#FFFFFF" colspan="3">&nbsp;</td>
+                </tr>
+                <tr>
+
                     <th>Items</th>
                     <th>QTY</th>
                     <th>Final Price</th>
@@ -171,8 +160,11 @@ session_destroy();
                     }
                     ?>
                 </tr>
+                <tr class="blank_row">
+                    <td bgcolor="#FFFFFF" colspan="3">&nbsp;</td>
+                </tr>
                 <tr>
-                    <br>
+
                     <td class="strong">Sub Total</td>
                     <td>&nbsp</td>
                     <td class="strong" id="sub_total_cell">$
@@ -210,6 +202,9 @@ session_destroy();
         </div>
         <script type="text/javascript" src="order_status.js"></script>
     </div>
+    <?php
+    session_destroy();
+    ?>
 </body>
 
 </html>

@@ -51,8 +51,14 @@ if (isset($_POST['custName_1'])) {
                     discount = '$discount',
                     totalPrice = '$grandTotal'
                     ";
-
-    $res2 = mysqli_query($conn, $sql2) or die(mysqli_error($conn));
+    if (mysqli_query($conn, $sql2)) {
+        $last_id2 = mysqli_insert_id($conn);
+    } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
+    $orderID = $last_id2;
+    $_SESSION['orderID'] = $orderID;
+    // $res2 = mysqli_query($conn, $sql2) or die(mysqli_error($conn));
 }
 ?>
 <!DOCTYPE html>
