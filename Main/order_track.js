@@ -1,11 +1,3 @@
-// Check for Error Feedback from invalid tracking ID
-
-if (document.getElementById('hidden_input').value == 'errorKey'){
-    console.log('asdfasdfasdfasdf');
-    alert('You have entered an Invalid Order Number');
-}
-
-
 // Link order number input with hidden input
 document.getElementById('order_number_input')
 .addEventListener("change", ((e)=>{
@@ -19,3 +11,10 @@ document.getElementById('order_number_button')
 .addEventListener("click", ((e)=>{
     document.getElementById('confirm_order_form').submit();
 }))
+
+console.log(document.getElementById('alert').value);
+// Check for Error Feedback from invalid tracking ID
+if (document.getElementById('alert').value == 1){
+    console.log('ALERT triggered');
+    alert('You have entered an Invalid Order Number');
+}

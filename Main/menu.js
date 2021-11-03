@@ -196,7 +196,6 @@ function initial_updateFees(key){
 
 
 var tabulated_table = document.getElementById('tabulated_table')
-
 console.log(!!document.getElementById('tabulated_table'));
 
 // document.getElementById('hiddenHref').addEventListener('click', (e)=>{
@@ -204,3 +203,8 @@ console.log(!!document.getElementById('tabulated_table'));
 //     e.preventDefault;
 //     document.getElementById('hiddenForm').submit();
 // })
+
+if (document.getElementById('alert').value == '1'){
+    console.log('ALERT triggered');
+    alert("No Menu Items selected, please select at least 1 item.");
+}

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset="UTF-8">
     <link rel='stylesheet' type='text/css' media='screen' href='css/styles.css'>
@@ -9,6 +10,7 @@
 </head>
 
 <body>
+    <!-- METADATA HANDLING -->
     <div id="grid">
 
         <div class="item item1" id="scrolling-bar">
@@ -90,6 +92,14 @@
                 $_SESSION['cart'][] = $_GET['buy'];
                 header('location: ' . $_SERVER['PHP_SELF'] . '?' . SID);
                 exit();
+            }
+            // Error handling
+            if ($_SESSION["alert"] == 1) {
+                echo '<input id="alert" type="hidden" name="alert" value="1">';
+                $_SESSION["alert"] = 0;
+            } else {
+                echo '<input type="hidden" id="alert" name="alert" value="0">';
+                $_SESSION["alert"] = 0;
             }
             ?>
             <h1>ORDER MENU</h1>
@@ -319,10 +329,9 @@
                     <input class="button" type="submit" name="submit" value="TO PAYMENT ↗">
                 </div>
             </form>
-
         </div>
-        <script type="text/javascript" src="menu.js"></script>
 
+        <script type="text/javascript" src="menu.js"></script>
     </div>
 </body>
 

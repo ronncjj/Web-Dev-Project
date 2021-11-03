@@ -20,7 +20,19 @@ if (isset($_POST['submit'])) {
     $_SESSION["item_qty_4"] = $_POST['item4'];
     $_SESSION["item_qty_5"] = $_POST['item5'];
     $_SESSION["item_qty_6"] = $_POST['item6'];
+
+    if ($_POST['item6'] == 0 and $_POST['item5'] == 0 and $_POST['item4'] == 0 and $_POST['item3'] == 0 and $_POST['item2'] == 0 and $_POST['item1'] == 0) {
+        // Pass alert to menu.php for javascript to parse
+        // 1 : alert, 1 : no
+        $_SESSION["alert"] = 1;
+        header("Location: menu.php");
+    } else {
+        $_SESSION["alert"] = 0;
+    }
 }
+
+
+
 ?>
 
 <?php

@@ -6,12 +6,15 @@ session_start();
 // Converting order ID to MD5 format, catches from order_track.php    
 if (!isset($_SESSION['orderID'])) {
     $_SESSION['orderID'] = $_POST['tracking_id'];
+    $errorchecker = 1;
 } // This loop catches refresh on the same page, if coming from Making an order
 elseif (isset($_SESSION['errorKey'])) {
     $_SESSION['orderID'] = $_SESSION['orderID'];
+    $errorchecker = 2;
 } // This loop catches confirm_order.php -> route_confirm_order.php
 elseif (isset($_SESSION['orderID']) && !isset($_POST['tracking_id'])) {
     $_SESSION['orderID'] = substr(md5($_SESSION['orderID']), 0, 4);
+    $errorchecker = 3;
 }
 ?>
 
@@ -82,6 +85,7 @@ $resultDB = mysqli_query($conn, $sqlDB);
 if (mysqli_num_rows($resultDB) > 0) {
     // Checker key
     $_SESSION['errorKey'] = 1;
+    $_SESSION['alert'] = 0;
     while ($row = mysqli_fetch_assoc($resultDB)) {
         if (substr(md5($row["orderID"]), 0, 4) == $_SESSION['orderID']) {
             $orderID = $_SESSION['orderID'];
@@ -98,6 +102,7 @@ if (mysqli_num_rows($resultDB) > 0) {
     }
     // In the case where no order was found.
     if ($_SESSION['errorKey'] == 1) {
+        $_SESSION['alert'] = 1;
         header("Location: order_track.php");
     }
 }

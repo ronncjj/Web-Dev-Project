@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php
-session_start();
-session_destroy();
-session_start();
-?>
-
 <head>
     <meta charset="UTF-8">
     <link rel='stylesheet' type='text/css' media='screen' href='css/styles.css'>
@@ -68,7 +62,7 @@ session_start();
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input id="contact_name_input" type="text" name="name" required align="center"></input>
+                                        <input required id="contact_name_input" type="text" name="name" required align="center"></input>
                                     </td>
                                 </tr>
                             </table>
@@ -83,7 +77,7 @@ session_start();
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input id='email' type="email" name="email" id="email" required align="center"></input>
+                                        <input required id='email' type="email" name="email" id="email" required align="center"></input>
                                     </td>
                                 </tr>
                             </table>
@@ -98,7 +92,7 @@ session_start();
                                 </tr>
                                 <tr>
                                     <td>
-                                        <textarea id="shipping_address_textarea" name="address" required align="center"></textarea>
+                                        <textarea required id="shipping_address_textarea" name="address" required align="center"></textarea>
                                     </td>
                                 </tr>
                             </table>
@@ -113,18 +107,33 @@ session_start();
                 <img src="./media/mxtt7r.jpg" alt="">
             </div>
         </div>
+
         <form action="order_status.php" method="POST" id="confirm_order_form">
-            <?php
-            session_start();
-            if (isset($_SESSION['errorKey'])) {
-                echo '<input type="hidden" id="hidden_input" name="tracking_id" value="errorKey">';
-            } else {
-                echo '<input type="hidden" id="hidden_input" name="tracking_id" value="0">';
-            }
-            ?>
+            <input type="hidden" id="hidden_input" name="tracking_id">
         </form>
-        <script type="text/javascript" src="order_track.js"></script>
+
+        <?php
+        session_start();
+        // ALERT HANDLING
+        if ($_SESSION['alert'] == 1) {
+            echo '<input type="hidden" id="alert" value="1">';
+        } else {
+            echo '<input type="hidden" id="alert" value="0">';
+            $_SESSION['alert'] = 0;
+        }
+        ?>
+        <?php
+        $to = "f32ee@localhost";
+        $subject = '';
+        $headers = 'From: f32ee@localhost' . "\r\n" .
+            'Reply-To: f32ee@localhost' . "\r\n" .
+            'X-Mailer: PHP/' . phpversion();
+
+        mail($to, $subject, $message, $headers, '-ff32ee@localhost');
+        // echo ("mail sent to : ".$to);
+        ?>
     </div>
 </body>
+<script type="text/javascript" src="order_track.js"></script>
 
 </html>
