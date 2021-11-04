@@ -1,4 +1,7 @@
-// Check box DOM
+//////////////////////
+// Box check functions
+//////////////////////
+// Check box DOM -- address
 var address_same = document.getElementById("address_same");
 address_same.addEventListener("change", sameAddress);
 
@@ -15,7 +18,6 @@ function sameAddress(event){
     if (node.checked) {
         billing_address.style.visibility = "hidden";
         billing_address.style.display = "none";
-        billing_address_textarea.value = shipping_address_textarea.value;
     }
     else{
         billing_address.style.visibility = "visible";
@@ -24,14 +26,14 @@ function sameAddress(event){
     }
 }
 
-// Check box DOM
+// Check box DOM -- name
 var name_same = document.getElementById("name_same");
 name_same.addEventListener("change", sameName);
 
-// Shipping address DOM
+// Contact name DOM
 var contact_name_input = document.getElementById("contact_name_input");
 
-// Billing address DOMs
+// Payment name DOMs
 var payment_name = document.getElementById("payment_name");
 var payment_name_input = document.getElementById("payment_name_input");
 
@@ -41,7 +43,6 @@ function sameName(event){
     if (node.checked) {
         payment_name.style.visibility = "hidden";
         payment_name.style.display = "none";
-        payment_name_input.value = contact_name_input.value;
     }
     else{
         payment_name.style.visibility = "visible";
@@ -50,7 +51,25 @@ function sameName(event){
     }
 }
 
+//////////////////////////////////////////
+// Mirror address and name on box checked
+/////////////////////////////////////////
+
+shipping_address_textarea.addEventListener("change", (e)=>{
+    if(address_same.checked){
+        billing_address_textarea.value = e.currentTarget.value;
+    }
+})   
+
+contact_name_input.addEventListener("change", (e)=>{
+    if(name_same.checked){
+    payment_name_input.value = e.currentTarget.value;
+    }
+})
+
+///////////////////////////
 // Handling of Grand Total
+///////////////////////////
 var sub_total_cell = document.getElementById("sub_total_cell");
 var delivery_cell = document.getElementById("delivery_cell");
 var grand_total_cell = document.getElementById("grand_total_cell");
@@ -58,20 +77,11 @@ var grand_total_cell = document.getElementById("grand_total_cell");
 // Grand total = sub total + delivery fees - discount
 grand_total = parseFloat(sub_total_cell.innerText.split('$')[1])
 + parseFloat(delivery_cell.innerText.split('$')[1]);
-
 grand_total_cell.innerText = '$' + grand_total.toFixed(2);
 
-// shipping_address_textarea.addEventListener("change", (e)=>{
-//     billing_address_textarea.value = e.currentTarget.value;
-// })
-
-// contact_name_input.addEventListener("change", (e)=>{
-//     payment_name_input.value = e.currentTarget.value;
-// })
-
-var list_of_coupon_codes = ['dbsnew21', 'ntunew21', 'f32ee', 'freepizza'];
 
 // Coupon code Handling
+var list_of_coupon_codes = ['dbsnew21', 'ntunew21', 'f32ee', 'freepizza'];
 var coupon_code_cell = document.getElementById("coupon_code_cell");
 coupon_code_cell.addEventListener("change", (e)=>{
     var node = e.currentTarget;
@@ -99,7 +109,9 @@ coupon_code_cell.addEventListener("change", (e)=>{
     grand_total_cell.innerText = '$' + grand_total.toFixed(2);
 })
 
+/////////////////
 // Hidden forms
+/////////////////
 var custName_1 = document.getElementById("custName_1");
 var custEmail_1 = document.getElementById("custEmail_1");
 var custAddress_1 = document.getElementById("custAddress_1");
@@ -117,15 +129,19 @@ document.getElementById('confirm_order_button').addEventListener('click', ((e)=>
     console.log(document.getElementById("custAddress_1").value);
     console.log(document.getElementById("discount").value);
 
-    if(paymentValidated()){
+    // Credit Card MTH / YR Expiry validation
+    if(cardExpiryValidation()){
         document.getElementById('confirm_order_form').submit();
     }
 }))
 
-
+//////////////////////////////
 // Form input error validator
-// Name Customer Info:
+/////////////////////////////
+
+// Customer name:
 document.getElementById("contact_name_input").addEventListener("change", nameValidation);
+// Payment name:
 document.getElementById("payment_name_input").addEventListener("change", nameValidation);
 
 function nameValidation(event){
@@ -143,44 +159,47 @@ function nameValidation(event){
             `);
     
             nameNode.focus();
+            nameNode.value = '';
             return false;
     }
 }
-// Validates payment when Form submited
-function paymentValidated() {
 
-    ///////////////////
-    // Credit Card Number
-    ///////////////////
+// Credit Card Number
+document.getElementById("cardNumber").addEventListener("change", (()=>{
     var creditCardNumber = document.getElementById("cardNumber").value;
     if(creditCardNumber.search(/^[0-9]{16}$/) != 0){
         alert(`
         (cardNumber) Input ERROR:
-        ${creditCardNumber.value}
+        ${creditCardNumber}
         
         Please enter 16 Numbers without spaces.
         `);
         
-        creditCardNumber.focus();
+        document.getElementById("cardNumber").value = '';
+        document.getElementById("cardNumber").focus();
         return false;
     }
-
-    ///////////////////
-    // Credit Card CV2
-    ///////////////////
+}));
+// Credit Card CV2
+document.getElementById("cardCV2").addEventListener("change", (()=>{
     var creditCardCV2 = document.getElementById("cardCV2").value;
     if(creditCardCV2.search(/^[0-9]{3}$/) != 0){
         alert(`
         (cardCV2) Input ERROR:
-        ${creditCardCV2.value}
+        ${creditCardCV2}
         
         Please enter 3 Numbers without spaces.
         `);
 
-        creditCardCV2.focus();
+        document.getElementById("cardCV2").value = '';
+        document.getElementById("cardCV2").focus();
         return false;
     }
+}));
 
+//// Validates payment when Form submited
+// Returns true if successful
+function cardExpiryValidation() {
     ///////////////////
     // Credit Card Date
     ///////////////////
@@ -208,26 +227,31 @@ function paymentValidated() {
     var currentYear = parseInt(today.getFullYear());
     var currentMonth = parseInt(today.getMonth()+1);
 
+    if(isNaN(expiryYear)){ 
+        document.getElementById("cardYear").focus();
+        throwError('4 digit number for the Expiry year.'); 
+        return false;
+    }
+
     if(expiryYear < currentYear){
-        throwError();
+        document.getElementById("cardYear").focus();
+        throwError('non expired card');
         return false;
     }
     else if(currentYear == expiryYear){
         if(expiryMonthNumber <= currentMonth){
-            throwError();
+        throwError('card at least a month from expiry.');
         return false;
         }
     }
-
-    function throwError(){
-        alert(`
-        (cardExpiry) Input ERROR:
-       
-        Please enter a non expired card.
-        `
-        );
-    }
-
     return true;
 }
 
+function throwError(message){
+    alert(`
+    (Card details) Input ERROR:
+   
+    Please enter a ${message}.
+    `
+    );
+}
