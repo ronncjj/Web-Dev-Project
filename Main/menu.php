@@ -146,7 +146,7 @@
                         <div class="price_tag">
                             <p id="price_2">$<?php echo $price_2 ?></p>
                         </div>
-                        <img src="./media/meatzza.jpg" class="choice-img" alt="">
+                        <img src="./media/classified_chicken.jpg" class="choice-img" alt="">
                     </th>
                 </tr>
                 <tr>
@@ -177,7 +177,7 @@
                         <div class="price_tag">
                             <p id="price_3">$<?php echo $price_3 ?></p>
                         </div>
-                        <img src="./media/meatzza.jpg" class="choice-img" alt="">
+                        <img src="./media/chilichicken2.jpg" class="choice-img" alt="">
                     </th>
                 </tr>
                 <tr>
@@ -208,7 +208,7 @@
                         <div class="price_tag">
                             <p id="price_4">$<?php echo $price_4 ?></p>
                         </div>
-                        <img src="./media/meatzza.jpg" class="choice-img" alt="">
+                        <img src="./media/vegie-quattro-pizza-cart.jpg" class="choice-img" alt="">
                     </th>
                 </tr>
                 <tr>
@@ -239,7 +239,7 @@
                         <div class="price_tag">
                             <p id="price_5">$<?php echo $price_5 ?></p>
                         </div>
-                        <img src="./media/meatzza.jpg" class="choice-img" alt="">
+                        <img src="./media/romanomargherita.jpg" class="choice-img" alt="">
                     </th>
                 </tr>
                 <tr>
@@ -270,7 +270,7 @@
                         <div class="price_tag">
                             <p id="price_6">$<?php echo $price_6 ?></p>
                         </div>
-                        <img src="./media/meatzza.jpg" class="choice-img" alt="">
+                        <img src="./media/classic_pepperoni.jpg" class="choice-img" alt="">
                     </th>
                 </tr>
                 <tr>

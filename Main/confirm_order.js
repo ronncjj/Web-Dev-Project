@@ -207,10 +207,12 @@ function paymentValidated() {
 
     if(expiryYear < currentYear){
         throwError();
+        return false;
     }
     else if(currentYear == expiryYear){
         if(expiryMonthNumber <= currentMonth){
             throwError();
+        return false;
         }
     }
 
@@ -221,7 +223,6 @@ function paymentValidated() {
         Please enter a non expired card.
         `
         );
-        return false;
     }
 
     return true;

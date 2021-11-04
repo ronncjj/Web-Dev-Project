@@ -57,12 +57,15 @@ session_destroy() ?>
         <div class="item item5 content" id="intro">
             <!-- <h2 id="ourStory">Our Story</h2> -->
             <p class="contentText">
-                Fret not, as Domino's Pizza is now available throughout major locations in Singapore.
-                You know our guarantees and our commitment to delivering quality pizzas. So go ahead and place your
-                orders now, sit back and chill while we prepare and deliver your pizza right away or to your desired day
-                and time within our operational hours.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur sit quibusdam impedit voluptatum fugit, hic excepturi face
+                re quo perspiciatis debitis commodi placeat eveniet velit
+                , molestias fuga explicabo neque, incidunt laboriosam?
+
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente assumenda nulla doloribus
+                atque odio praesentium quibusdam sed? Magni dolore ullam te
+                mpore voluptatum ratione quis quidem ad, sequi doloribus corrupti ipsum.
             </p>
-            <img class="contentImage" src="./media/pizza.jpeg" class="story-pizza-img" alt="">
+            <img class="contentImage" src="./media/wallhaven-lmzdjq.jpg" class="story-pizza-img" alt="">
         </div>
 
         <div class="item item6">
@@ -72,7 +75,7 @@ session_destroy() ?>
             <table class="our-choice-table">
                 <tr>
                     <th class="choice-desc" rowspan="2">
-                        <img src="./media/meatzza.jpg" class="choice-img" alt="">
+                        <img src="./media/classified_chicken.jpg" class="choice-img" alt="">
                         <a class="button" href="menu.php">Order now</a>
                     </th>
                     <th class="choice-title">Ronn's Choice</th>
