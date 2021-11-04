@@ -114,9 +114,6 @@ for ($i = 0; $i < count($QtyArray); $i++) {
     }
 }
 
-
-
-
 $to      = "f32ee@localhost";
 $subject = 'Pizza Order Confirmation #' . substr(md5($_SESSION['orderID']), 0, 4);
 $message = 'Thank you ' . $custName_1 . ' for ordering from R & J Pizza Place!'

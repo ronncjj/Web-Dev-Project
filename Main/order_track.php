@@ -52,7 +52,7 @@
             <div class="order_arrival_content_left">
                 <div class="contact_information">
                     <!-- <h2>Customer information</h2> -->
-                    <form action="show_post.php" method="post">
+                    <form action="route_contact.php" method="post" onsubmit="alert('Form submitted successfully.')">
                         <div id="contact_name" class="contact_div">
                             <table>
                                 <tr>
@@ -92,11 +92,13 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <textarea required id="shipping_address_textarea" name="address" required align="center"></textarea>
+                                        <textarea required id="message_textarea" name="message" required align="center"></textarea>
                                     </td>
                                 </tr>
                             </table>
                         </div>
+                        <!-- Element to catch parent flow, to route_contact.php -->
+                        <input type="hidden" name="fromTrack">
                         <br>
                         <input type="submit" value="Submit" class="button">
                     </form>
@@ -121,16 +123,6 @@
             echo '<input type="hidden" id="alert" value="0">';
             $_SESSION['alert'] = 0;
         }
-        ?>
-        <?php
-        $to = "f32ee@localhost";
-        $subject = '';
-        $headers = 'From: f32ee@localhost' . "\r\n" .
-            'Reply-To: f32ee@localhost' . "\r\n" .
-            'X-Mailer: PHP/' . phpversion();
-
-        mail($to, $subject, $message, $headers, '-ff32ee@localhost');
-        // echo ("mail sent to : ".$to);
         ?>
     </div>
 </body>

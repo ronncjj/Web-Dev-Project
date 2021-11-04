@@ -177,7 +177,7 @@ session_destroy() ?>
                 </table>
             </div>
             <div class="contact-region">
-                <form action="show_post.php" method="post">
+                <form action="route_contact.php" method="post" id="contact_form" onsubmit="alert('Form submitted successfully.')">
                     <div id="contact_name" class="contact_div">
                         <table>
                             <tr>
@@ -207,20 +207,22 @@ session_destroy() ?>
                         </table>
                     </div>
                     <br>
-                    <div id="contact_experience" class="contact_div">
+                    <div id="contact_message" class="contact_div">
                         <table>
                             <tr>
                                 <td>
-                                    <label for="experience">Message:</label>
+                                    <label for="message">Message:</label>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <textarea name="experience" required align="center"></textarea>
+                                    <textarea name="message" required align="center"></textarea>
                                 </td>
                             </tr>
                         </table>
                     </div>
+                    <!-- Element to catch parent flow, to route_contact.php -->
+                    <input type="hidden" name="fromIndex">
                     <br>
                     <input class="button" type="reset" value="Clear">
                     <input class="button" type="submit" value="Submit">
@@ -236,6 +238,7 @@ session_destroy() ?>
             <div class="item item9">9</div> -->
     </div>
     <div id="bottom"></div>
+    <!-- <script type="text/javascript" src="index.js"></script> -->
 </body>
 
 </html>
