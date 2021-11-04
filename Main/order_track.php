@@ -106,7 +106,7 @@
             </div>
             <div class="order_arrival_content_right">
                 <h2>Happy to serve you!</h2>
-                <img src="./media/mxtt7r.jpg" alt="">
+                <img src="./media/concept-customer-operator-online-technical-260nw-1136122934.jpg" alt="">
             </div>
         </div>
 

@@ -84,6 +84,9 @@ coupon_code_cell.addEventListener("change", (e)=>{
         document.getElementById('coupon_code_title').innerHTML = "Coupon Code '" + coupon_code_name + "'";
         document.getElementById('discount').value = coupon_discount;
     }
+    else{
+        alert(`The coupon code you've entered is Invalid`);
+    }
 
     // Grand total = sub total + delivery fees - discount
     grand_total = parseFloat(sub_total_cell.innerText.split('$')[1])
