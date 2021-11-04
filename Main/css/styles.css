@@ -169,7 +169,8 @@ li {
     position: fixed;
     font-size: 1.1rem;
     /* color: black; */
-    color: #00AE42;
+    /* color: #00AE42; */
+    color: #5acca8;
     text-shadow: 0.5px 0.5px green;
 }
 

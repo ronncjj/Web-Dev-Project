@@ -73,7 +73,7 @@ session_destroy() ?>
                 <tr>
                     <th class="choice-desc" rowspan="2">
                         <img src="./media/meatzza.jpg" class="choice-img" alt="">
-                        <figcaption class="choice-caption">Add to cart</figcaption>
+                        <a class="button" href="menu.php">Order now</a>
                     </th>
                     <th class="choice-title">Ronn's Choice</th>
                 </tr>
@@ -95,7 +95,7 @@ session_destroy() ?>
                     <th class="choice-title">Justin's Choice</th>
                     <th class="choice-desc" rowspan="2">
                         <img src="./media/meatzza.jpg" class="choice-img" alt="">
-                        <figcaption class="choice-caption">Add to cart</figcaption>
+                        <a class="button" href="menu.php">Order now</a>
                     </th>
                 </tr>
                 <tr>

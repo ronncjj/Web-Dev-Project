@@ -119,10 +119,12 @@
         // ALERT HANDLING
         if ($_SESSION['alert'] == 1) {
             echo '<input type="hidden" id="alert" value="1">';
+            $_SESSION['alert'] = 0;
         } else {
             echo '<input type="hidden" id="alert" value="0">';
             $_SESSION['alert'] = 0;
         }
+        // session_destroy();
         ?>
     </div>
 </body>

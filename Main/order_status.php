@@ -4,7 +4,8 @@
 <?php
 session_start();
 // Converting order ID to MD5 format, catches from order_track.php    
-if (!isset($_SESSION['orderID'])) {
+// if (!isset($_SESSION['orderID'])) {
+if (isset($_POST['tracking_id'])) {
     $_SESSION['orderID'] = $_POST['tracking_id'];
     $errorchecker = 1;
 } // This loop catches refresh on the same page, if coming from Making an order
@@ -85,7 +86,7 @@ $resultDB = mysqli_query($conn, $sqlDB);
 if (mysqli_num_rows($resultDB) > 0) {
     // Checker key
     $_SESSION['errorKey'] = 1;
-    $_SESSION['alert'] = 0;
+    $_SESSION['alert'] = 1;
     while ($row = mysqli_fetch_assoc($resultDB)) {
         if (substr(md5($row["orderID"]), 0, 4) == $_SESSION['orderID']) {
             $orderID = $_SESSION['orderID'];
@@ -98,11 +99,11 @@ if (mysqli_num_rows($resultDB) > 0) {
             $discount = $row["discount"];
             $totalPrice = $row["totalPrice"];
             $_SESSION['errorKey'] = 0;
+            $_SESSION['alert'] = 0;
         }
     }
     // In the case where no order was found.
     if ($_SESSION['errorKey'] == 1) {
-        $_SESSION['alert'] = 1;
         header("Location: order_track.php");
     }
 }
@@ -128,6 +129,9 @@ $QtyArray = [$qty_1, $qty_2, $qty_3, $qty_4, $qty_5, $qty_6];
             <nav id="leftNav" class="topnav">
                 <ul>
                     <li><a href="index.php">HOME</a></li>
+                    <?php
+                    // echo $errorchecker;
+                    ?>
                     <li><a href="index.php#intro">ABOUT</a></li>
                     <li><a href="index.php#outlet">OULET</a></li>
                 </ul>
@@ -222,10 +226,10 @@ $QtyArray = [$qty_1, $qty_2, $qty_3, $qty_4, $qty_5, $qty_6];
         <script type="text/javascript" src="order_status.js"></script>
     </div>
     <?php
-    // // Destroy session if not rerouted
+    // Destroy session if not rerouted
     // if ($key != 0) {
     //     session_destroy();
-    // }   
+    // }
     ?>
 </body>
 

@@ -296,9 +296,9 @@
         <div class="right_sidebar">
             <table id="tabulated_table" class="tabulated_table">
                 <th class="list_header">Item</th>
-                <th class="list_header" style="background-color: cadetblue; box-shadow: none;"></th>
+                <th class="list_header" style="background-color: #4C86A8; box-shadow: none;"></th>
                 <th class="list_header">QTY</th>
-                <th class="list_header" style="background-color: cadetblue; box-shadow: none;"></th>
+                <th class="list_header" style="background-color: #4C86A8; box-shadow: none;"></th>
                 <th class="list_header">Price</th>
 
             </table>

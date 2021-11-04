@@ -291,7 +291,7 @@ $arraySum = [];
                             </tr>
                             <tr>
                                 <td>
-                                    <input id='cardNumber' type="text" name="cardNumber" required align="center"></input>
+                                    <input id='cardNumber' type="text" name="cardNumber" maxlength="16" required align="center"></input>
                                 </td>
                             </tr>
                         </table>
@@ -306,7 +306,7 @@ $arraySum = [];
                             </tr>
                             <tr>
                                 <td>
-                                    <input id='cardCV2' type="text" name="cardCV2" required align="center"></input>
+                                    <input id='cardCV2' type="text" name="cardCV2" maxlength="3" required align="center"></input>
                                 </td>
                             </tr>
                         </table>
@@ -351,7 +351,7 @@ $arraySum = [];
                             </tr>
                             <tr>
                                 <td>
-                                    <input placeholder="YEAR" id='cardYear' type="text" name="cardYear" required align="center"></input>
+                                    <input placeholder="YEAR" id='cardYear' type="text" name="cardYear" required maxlength="4" align="center"></input>
                                 </td>
                             </tr>
                         </table>

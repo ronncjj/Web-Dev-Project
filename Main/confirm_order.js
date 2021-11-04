@@ -61,7 +61,6 @@ grand_total = parseFloat(sub_total_cell.innerText.split('$')[1])
 
 grand_total_cell.innerText = '$' + grand_total.toFixed(2);
 
-
 // shipping_address_textarea.addEventListener("change", (e)=>{
 //     billing_address_textarea.value = e.currentTarget.value;
 // })
@@ -102,7 +101,7 @@ var custName_1 = document.getElementById("custName_1");
 var custEmail_1 = document.getElementById("custEmail_1");
 var custAddress_1 = document.getElementById("custAddress_1");
 var grandTotal = document.getElementById("grandTotal");
-
+// Form submission handling
 document.getElementById('confirm_order_button').addEventListener('click', ((e)=>{
     custName_1.value = document.getElementById("contact_name_input").value;
     custEmail_1.value = document.getElementById("contact_email_input").value;
@@ -114,5 +113,117 @@ document.getElementById('confirm_order_button').addEventListener('click', ((e)=>
     console.log(document.getElementById("custEmail_1").value);
     console.log(document.getElementById("custAddress_1").value);
     console.log(document.getElementById("discount").value);
-    document.getElementById('confirm_order_form').submit();
+
+    if(paymentValidated()){
+        document.getElementById('confirm_order_form').submit();
+    }
 }))
+
+
+// Form input error validator
+// Name Customer Info:
+document.getElementById("contact_name_input").addEventListener("change", nameValidation);
+document.getElementById("payment_name_input").addEventListener("change", nameValidation);
+
+function nameValidation(event){
+        // Get the target node of the event
+        let nameNode = event.currentTarget;
+        console.log(nameNode.value);
+        
+        //// only allow Alphabets and spaces
+        if(nameNode.value.search(/^[a-zA-Z\s]*$/) != 0){
+            alert(`
+            (${nameNode.id}) Input ERROR:
+            ${nameNode.value}
+            
+            Enter only alphabets & spaces
+            `);
+    
+            nameNode.focus();
+            return false;
+    }
+}
+// Validates payment when Form submited
+function paymentValidated() {
+
+    ///////////////////
+    // Credit Card Number
+    ///////////////////
+    var creditCardNumber = document.getElementById("cardNumber").value;
+    if(creditCardNumber.search(/^[0-9]{16}$/) != 0){
+        alert(`
+        (cardNumber) Input ERROR:
+        ${creditCardNumber.value}
+        
+        Please enter 16 Numbers without spaces.
+        `);
+        
+        creditCardNumber.focus();
+        return false;
+    }
+
+    ///////////////////
+    // Credit Card CV2
+    ///////////////////
+    var creditCardCV2 = document.getElementById("cardCV2").value;
+    if(creditCardCV2.search(/^[0-9]{3}$/) != 0){
+        alert(`
+        (cardCV2) Input ERROR:
+        ${creditCardCV2.value}
+        
+        Please enter 3 Numbers without spaces.
+        `);
+
+        creditCardCV2.focus();
+        return false;
+    }
+
+    ///////////////////
+    // Credit Card Date
+    ///////////////////
+    var expiryYear = parseInt(document.getElementById("cardYear").value);
+    var expiryMonth = document.getElementById("cardMonth").value;
+
+    // Mapping month to integer
+    const month_map = {
+        'january' : 1,
+        'february' : 2,
+        'march' : 3,
+        'april' : 4,
+        'may' : 5,
+        'june' : 6,
+        'july' : 7,
+        'august' : 8,
+        'september' : 9,
+        'october' : 10,
+        'november' : 11,
+        'december' : 12,
+    }
+    var expiryMonthNumber = month_map[expiryMonth];
+    
+    var today = new Date();
+    var currentYear = parseInt(today.getFullYear());
+    var currentMonth = parseInt(today.getMonth()+1);
+
+    if(expiryYear < currentYear){
+        throwError();
+    }
+    else if(currentYear == expiryYear){
+        if(expiryMonthNumber <= currentMonth){
+            throwError();
+        }
+    }
+
+    function throwError(){
+        alert(`
+        (cardExpiry) Input ERROR:
+       
+        Please enter a non expired card.
+        `
+        );
+        return false;
+    }
+
+    return true;
+}
+
