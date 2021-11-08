@@ -18,11 +18,12 @@ function sameAddress(event){
     if (node.checked) {
         billing_address.style.visibility = "hidden";
         billing_address.style.display = "none";
+        billing_address_textarea.value = shipping_address_textarea.value;
     }
     else{
         billing_address.style.visibility = "visible";
         billing_address.style.display = "inline-block";
-        // billing_address_textarea.value = "";
+        billing_address_textarea.value = "";
     }
 }
 
@@ -43,11 +44,12 @@ function sameName(event){
     if (node.checked) {
         payment_name.style.visibility = "hidden";
         payment_name.style.display = "none";
+        payment_name_input.value = contact_name_input.value;
     }
     else{
         payment_name.style.visibility = "visible";
         payment_name.style.display = "inline-block";
-        // billing_address_textarea.value = "";
+        payment_name.value = "";
     }
 }
 
@@ -58,12 +60,16 @@ function sameName(event){
 shipping_address_textarea.addEventListener("change", (e)=>{
     if(address_same.checked){
         billing_address_textarea.value = e.currentTarget.value;
+        console.log('shipping_address_textarea.value: ', shipping_address_textarea.value);
+        console.log('billing_address_textarea.value: ', billing_address_textarea.value);
     }
 })   
 
 contact_name_input.addEventListener("change", (e)=>{
     if(name_same.checked){
     payment_name_input.value = e.currentTarget.value;
+    console.log('contact_name_input.value: ', contact_name_input.value);
+    console.log('payment_name_input.value: ', payment_name_input.value);
     }
 })
 
@@ -140,14 +146,16 @@ document.getElementById('confirm_order_button').addEventListener('click', ((e)=>
 /////////////////////////////
 
 // Customer name:
-document.getElementById("contact_name_input").addEventListener("change", nameValidation);
+document.getElementById("contact_name_input")
+.addEventListener("change", nameValidation);
 // Payment name:
-document.getElementById("payment_name_input").addEventListener("change", nameValidation);
+document.getElementById("payment_name_input")
+.addEventListener("change", nameValidation);
 
 function nameValidation(event){
         // Get the target node of the event
         let nameNode = event.currentTarget;
-        console.log(nameNode.value);
+        // console.log(nameNode.value);
         
         //// only allow Alphabets and spaces
         if(nameNode.value.search(/^[a-zA-Z\s]*$/) != 0){
