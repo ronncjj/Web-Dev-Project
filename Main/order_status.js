@@ -1,6 +1,7 @@
 // Handling of Grand Total
 var sub_total_cell = document.getElementById("sub_total_cell");
 var delivery_cell = document.getElementById("delivery_cell");
+var coupon_code_cell = document.getElementById("coupon_code_cell");
 var grand_total_cell = document.getElementById("grand_total_cell");
 
 // Grand total = sub total + delivery fees - discount

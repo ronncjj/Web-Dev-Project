@@ -89,19 +89,18 @@ function QtyChange(event) {
     motive == 'minus' ? window['amount_' + key].innerHTML = amount-1 :
     window['amount_' + key].innerHTML = amount+1;
 
-    handleList(key);
     // Checking if negative amount, exits if it is
+    handleList(key);
     updateFees(key, motive);
     updateHiddenform(key);
 }
+
 // right_sidebar changes
 function handleList(key){
     // updating Local amount variable
     var amount = parseFloat(window['amount_' + key].innerHTML);
-
     // Table is parent
     var tabulated_table = document.getElementById('tabulated_table');
-
     // Create new DOM
     var tableRow = document.createElement('tr');
 
@@ -145,6 +144,7 @@ function handleList(key){
     if(amount == 0) {return;}
     tabulated_table.appendChild(tableRow);
 }
+
 // tabulated prices at right_sidebar
 function updateFees(key, motive){
     // updating Local amount variable
@@ -166,6 +166,7 @@ function updateFees(key, motive){
     total = sub_total + delivery_fee;
     tabulated_total.innerText = 'Total: $' + total.toFixed(2);
 }
+
 // hidden form for PHP post
 function updateHiddenform(key){
     var amount = parseFloat(window['amount_' + key].innerHTML);
