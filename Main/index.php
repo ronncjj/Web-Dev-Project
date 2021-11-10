@@ -8,7 +8,6 @@ session_destroy() ?>
 <head>
     <meta charset="UTF-8">
     <link rel='stylesheet' type='text/css' media='screen' href='css/styles.css'>
-    <script src='main.js'></script>
     <title>R&J Pizza Place</title>
 </head>
 
@@ -235,13 +234,14 @@ session_destroy() ?>
 
         <!-- <div class="item item4"></div> -->
         <!-- <div class="item item5">5</div>
-            <div class="item item6">6</div>
-            <div class="item item7">7</div>
-            <div class="item item8">8</div>
-            <div class="item item9">9</div> -->
+                <div class="item item6">6</div>
+                <div class="item item7">7</div>
+                <div class="item item8">8</div>
+                <div class="item item9">9</div> -->
     </div>
     <div id="bottom"></div>
     <!-- <script type="text/javascript" src="index.js"></script> -->
+    <script src='index.js'></script>
 </body>
 
 </html>
